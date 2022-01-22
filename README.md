@@ -1,8 +1,4 @@
 # PCU-MOF Workflow  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5888905.svg)](https://doi.org/10.5281/zenodo.5888905)
-If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
-LAMMPS, Achmol, SuperCeller*, cite us:
->M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
-
 
 This repository provides the WaNos used in the PCU-MOF Workflow. This workflow is built with the [Simstack](https://www.simstack.de/) framework automates the construction, optimization, and prediction of electronic properties of the PCU topology of metal-organic frameworks. The PCU-MOF workflow consists of three central parts: (1) **MOF Builder**, (2) **MOF Optimizer** and (3) **MOF Analyzer**. 
 
@@ -33,6 +29,10 @@ After configuring SimStack and copying WaNos, PCU-MOF workflow can be used eithe
 If you want to use HPC resources of AG Wenzel (with already installed all necessary modules), please contact us via mariana.kozlowska@kit.edu and wolfgang.wenzel@kit.edu for an access. After copying **WaNos** from this repository into WaNos directory inside SimStack and/or **workflow** into the SimStack workflow directory, you can access WaNos and/or workflow directly via SimStack client. If you use **PCU-MOF workflow**, it is enough to upload user-defined *xyz* files of MOF linkers inside the workflow and specify the user-selected setup inside WaNos to run the workflow. You can also drag-and-drop **WaNos** in order to create your own workflow (keep in mind correct input-output file selection between WaNos). If the same setup should be used for the calculation of MOF library, it is enough just to specify *xyz* files in a workflow and click the *Run* button in SimStack. No further modifications are needed.
 
 If you have access to the AG Wenzel HPC, copy the `WORKFLOW/PCU-paper-workflow` in the workflow directory of your SimStack. After loading the SimStack, the workflow can be loaded and used straightly.
+
+If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
+LAMMPS, Achmol, SuperCeller*, cite us:
+>M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
 
 ### Software installation
 The best method for installing the software is installing [ANACONDA](https://docs.anaconda.com/anaconda/install/index.html) with the following libraries:
@@ -102,7 +102,7 @@ libxml2
 swig
 Eigen > 2
 ```
-#### AuToGrAfs
+#### AuToGraFS
 We used a costomized version of AuToGraFs that is available in autografs directory. It is based on the python 2 and call the mofgen.py file to run. to install it, copy the dirextory on your system and export the path in your shell. for bash :
 
 ```
