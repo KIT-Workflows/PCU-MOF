@@ -1,4 +1,7 @@
 # PCU-MOF Workflow  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5888905.svg)](https://doi.org/10.5281/zenodo.5888905)
+If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
+LAMMPS, Achmol, SuperCeller*, cite us:
+>M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
 
 
 This repository provides the WaNos used in the PCU-MOF Workflow. This workflow is built with the [Simstack](https://www.simstack.de/) framework automates the construction, optimization, and prediction of electronic properties of the PCU topology of metal-organic frameworks. The PCU-MOF workflow consists of three central parts: (1) **MOF Builder**, (2) **MOF Optimizer** and (3) **MOF Analyzer**. 
@@ -137,11 +140,6 @@ export  PYTHONPATH=/opt/obabel/3.1.1/lib:$PYTHONPATH
 CAUTION:
 Edit all WaNos xml files in the way that passes the required software (anaconda, openbable, autografs).
 For the MOFsofts software, please communicate with Mersad.Mostaghimi@kit.edu.
-
-### Cite us
-If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
-LAMMPS, Achmol, SuperCeller*, cite us:
->M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
 
 If you are interested in further WaNos development for your specific case, contact us via mariana.kozlowska@kit.edu and wolfgang.wenzel@kit.edu
 
