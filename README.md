@@ -146,4 +146,3 @@ If you are interested in further WaNos development for your specific case, conta
 ## License & copyright
 © M. Mostaghimi, C. R. C. Rêgo, W. Wenzel, M. Kozlowska
 Licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE).
-
