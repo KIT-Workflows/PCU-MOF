@@ -1,0 +1,29 @@
+<root>
+  <WaNo type="MOF-input" uuid="67a0674c-275d-4de0-9833-3b31c810338b" id="0" name="MOF-input"/>
+  <WFControl name="Parallel" type="Parallel">
+    <WFControl name="SubWF" type="SubWorkflow">
+      <WaNo type="DFT-Turbomole" uuid="ef1ed333-77dc-4036-a325-cbcd62e60829" id="0" name="DFT-Turbomole"/>
+      <WaNo type="lcmaker" uuid="75b96ba9-d828-4c17-856f-c81ac5438d0b" id="1" name="lcmaker"/>
+    </WFControl>
+    <WFControl name="SubWF" type="SubWorkflow">
+      <WaNo type="DFT-Turbomole" uuid="0296ed3f-898b-462a-9bc8-d2f300f0f90d" id="0" name="DFT-Turbomole"/>
+      <WaNo type="lcmaker" uuid="ae5b61bf-71fc-416a-a870-7d5046b87484" id="1" name="lcmaker"/>
+    </WFControl>
+  </WFControl>
+  <WaNo type="AuToGraFS" uuid="7dbc4ca0-95eb-465e-9a53-41be1786affc" id="2" name="AuToGraFS"/>
+  <WaNo type="GULP" uuid="bf6cafe3-15c5-43b9-bfce-8930a718b7ed" id="3" name="GULP"/>
+  <WaNo type="Format-Converter" uuid="870ee226-bedc-41b3-9ecf-c4219409c77c" id="4" name="Format-Converter"/>
+  <WaNo type="DFT-VASP" uuid="0e3cf4fc-8fed-42e2-82cf-9922dbc88c65" id="5" name="DFT-VASP"/>
+  <WFControl name="Parallel_1" type="Parallel">
+    <WFControl name="SubWF" type="SubWorkflow">
+      <WaNo type="Format-Converter" uuid="c74be2a9-e696-48d1-8a91-45983ed4f35a" id="0" name="Format-Converter"/>
+      <WaNo type="lammps-interface" uuid="7e047fda-3c67-44cb-8c29-e0784fc93a86" id="1" name="lammps-interface"/>
+      <WaNo type="LAMMPS" uuid="5d2d375d-89da-4347-bee6-41907e500fd1" id="2" name="LAMMPS"/>
+    </WFControl>
+    <WFControl name="SubWF" type="SubWorkflow">
+      <WaNo type="Achmol" uuid="20eca090-ff95-440a-85a4-98618ec9027d" id="0" name="Achmol"/>
+      <WaNo type="SuperCeller" uuid="2e8fd57a-8fac-40b4-8956-ec50f86a28c4" id="1" name="SuperCeller"/>
+      <WaNo type="QuantumPatch3" uuid="ca7ebab7-8979-4fc4-8d6c-889012eaa212" id="2" name="QuantumPatch3"/>
+    </WFControl>
+  </WFControl>
+</root>

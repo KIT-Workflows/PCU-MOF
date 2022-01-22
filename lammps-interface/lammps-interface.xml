@@ -1,0 +1,175 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi </Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo perform the Lammps-Interface. The Lammps-Interface takes the cif file and create the input file for LAMMPS
+ 		</Description>
+
+ 		<Keyword>MOFs,linker,center</Keyword>
+	</WaNoMeta>
+
+	<WaNoRoot name="Lammps-Interface">
+		
+<WaNoBool name="Fix_cell" description=" Fix the cell in trajectories">False</WaNoBool>
+<WaNoFile logical_filename="lammps.cif" description = "path to cif file to interpret . Example: lammps.cif" name="INPUT_FILE">lammps.cif</WaNoFile>
+	<WaNoDictBox name="Force Field options">
+
+		<WaNoDropDown  name="FORCE_FIELD" description= "Enter the requested force field to describe the system. Current options are
+                        'BTW_FF', 'Dreiding', 'UFF', 'UFF4MOF', and 'Dubbeldam'. The default is set
+                        to the Universal Force Field for MOFs[UFF4MOF].">
+            <Entry id="0" chosen="True">UFF4MOF</Entry>
+            <Entry id="1">BTW_FF</Entry>
+			<Entry id="2">Dreiding</Entry>
+			<Entry id="3">UFF</Entry>
+			<Entry id="4">Dubbeldam</Entry>
+        </WaNoDropDown>
+
+		<WaNoDropDown  name="molecule-ff" description= "Chose a force field for any molecules found in the structure. This is applies
+                        a 'blanket' to all found molecules, so exercise with caution. Future
+                        iterations will consider an input file to differentiate force fields between
+                        different molecules. Default is the same force field requested for the
+                        framework (assumes some generalized FF like UFF or Dreiding).">
+            <Entry id="0" chosen="True">same firce field</Entry>
+            <Entry id="1">BTW_FF</Entry>
+			<Entry id="2">Dreiding</Entry>
+			<Entry id="3">UFF</Entry>
+			<Entry id="4">Dubbeldam</Entry>
+			<Entry id="5">UFF4MOF</Entry>
+			<Entry id="6">framework force field</Entry>
+        </WaNoDropDown>
+
+		<WaNoBool name="h-bonding" description= "Add hydrogen bonding potentials to the force field characterization.
+                        Currently only applies to Dreiding. Default is off">False</WaNoBool>
+
+		<WaNoString name="dreid-bond-type" description= 'Request the Morse bond potential for the Dreiding force field. Default is
+                        harmonic.' >harmonic</WaNoString>
+
+      	<WaNoBool name="fix-metal" description= "Fix the metal geometries with modified potentials to match their input
+                        geometries. The potential isn't set to be overly rigid so that the material
+                        will behave physically in finite temperature calculations, however it may
+                        introduce some unintended artifacts so exercise with caution. Useful for
+                        structure minimizations. Currently only applies to UFF and Dreiding Force
+                        Fields. Default is off.">False</WaNoBool>
+
+ </WaNoDictBox>
+
+	<WaNoDictBox name="Simulation options">
+
+	<WaNoBool name="minimize" description= "Add hydrogen bonding potentials to the force field characterization.
+                        Currently only applies to Dreiding. Default is off">False</WaNoBool>
+
+	<WaNoBool name="bulk-moduli" description= "Request input files necessary for an energy vs volume calculation. This will
+                        use values from ITER_COUNT and MAX_DEV to create the volume range">False</WaNoBool>
+
+	<WaNoBool name="npt" description= "Request input files necessary for an isothermal-isobaric simulation. This
+                        will use values from TEMP and PRESSURE, NEQSTP, and NPRODSTP to produce the
+                        input file.">False</WaNoBool>		
+
+	<WaNoBool name="nvt" description= "Request input files necessary for an canonical simulation. This will use
+                        values from TEMP, NEQSTP, and NPRODSTP to produce the input file.
+                        Equilibration with a Langevin thermostat, Production with Nose-Hoover.">False</WaNoBool>							
+
+	<WaNoFloat name="cutoff" description = "Set the long-range cutoff to this value in Angstroms. This will determine the
+                        size of the supercell computed for the simulation. Default is 12.5 angstroms.">12.5</WaNoFloat>
+
+ 	<WaNoBool name="REPLICATION" description= "Manually specify the replications to form the supercell Use comma, space or
+                        'x' delimited values for the a,b,c directions. This is useful when dealing
+                        with flexible materials where you know that structural collapse will result
+                        in the box decreasing past 2*rcut">True</WaNoBool>
+
+    <WaNoMatrixFloat rows="1" cols="3" col_header="a; b; c"  name="replication" row_header=""	visibility_condition="%s == True" visibility_var_path="REPLICATION">[[4,4,4]]</WaNoMatrixFloat>
+
+ 	<WaNoBool name="orthogonalize" description= "Makes a supercell of the simulation box with more-or-less orthogonal
+                        supercell vectors. This is an approximation, but is useful for certain
+                        calculations. Default is FALSE.">False</WaNoBool>
+
+	<WaNoBool name="randomize-velocities" description= "Adds a velocity randomization of the atoms prior to finite temperature
+                        simulation. The velocities are randomized to TEMP.">False</WaNoBool>
+
+	<WaNoInt name="dcd" description = "Store trajectory of simulation in a dcd format every DUMP_DCD steps. Default
+                        is no trajectory file will be written">0</WaNoInt>		
+
+	<WaNoInt name="xyz" description = "Store trajectory of simulation in a xyz format every DUMP_XYZ steps. If not
+                        requested, then no trajectory file will be written.">0</WaNoInt>				
+
+ 	<WaNoInt name="lammpstrj" description = "Store trajectory of simulation in a lammpstrj format every DUMP_LAMMPSTRJ
+                        steps. If not requested, then no trajectory file will be written.">0</WaNoInt>
+
+  	<WaNoBool name="restart" description= "Store last snapshot of trajectory of simulation in lammps traj file format.
+                        index of last step RESTART = NEQSTP + NPRODSTP. If NEQSTP and NPRODSTP are
+                        not specified, then RESTART=1">False</WaNoBool>
+
+ </WaNoDictBox>
+	<WaNoDictBox name="Parameter options">
+
+	<WaNoFloat name="tolerance" description = "Tolerance in angstroms to determine detection of inorganic clusters. Default
+                        is 0.4 angstroms">0.4</WaNoFloat>	
+
+
+ 	<WaNoInt name="neighbour-size" description = "To find SBUs in the framework via pattern recognition. This parameter
+                        determines how large a subset of atoms to search around each central atom in
+                        the framework. Central atoms are typically considered the metal species for
+                        inorganic SBUs or carbon/nitrogen for organic SBUs. This parameter will
+                        collect all atoms within NEIGHBOUR_SIZE bonds from the central atom. Default
+                        is 5.">5</WaNoInt>
+
+ 	<WaNoInt name="iter-count" description = "Number of iteration steps to change a variable of interest (temperature,
+                        volume). Default is 10 steps.">10</WaNoInt>
+
+	<WaNoFloat name="max-deviation" description = " Max deviation of adjusted variable at each step is scaled by
+                        MAX_DEV/ITER_COUNT. Default is 0.01 (ideal for volume).">0.01</WaNoFloat>
+
+	<WaNoFloat name="temperature" description = "Simulation temperature. This parameter is used only if NPT or NVT are True.
+                        Default is 298.0 Kelvin.">298.0</WaNoFloat>
+
+	<WaNoFloat name="pressure" description = "Simulation pressure. This parameter is used only if NPT is True. Default is
+                        1.0 atmosphere.">1.0</WaNoFloat>
+
+ 	<WaNoInt name="production-steps" description = "Number of production steps in the simulation. Applies to NPT and
+                        THERMAL_SCALING simulations. Default is 200,000 steps. (corresponding to 200
+                        ps if the timestep is 1 fs)">200000</WaNoInt>
+
+ 	<WaNoInt name="equilibration-steps" description = "Number of equilibration steps in the simulation. Applies to NPT and
+                        THERMAL_SCALING simulations. Default is 200,000 steps. (corresponding to 200
+                        ps if the timestep is 1 fs)">200000</WaNoInt>
+	 </WaNoDictBox>
+
+<WaNoBool name="outputcif" description="Write a .cif file for visualization. Necessary for debugging purposes, this file can show the user how the structure has been interpreted by the program.">False</WaNoBool>
+<WaNoBool name="outputpdb" description="Write a .pdb file for visualization. Necessary for debugging purposes, this file can show the user how the structure has been interpreted by the program. NB: currently deletes bonds that cross a periodic boundary so, for visualization purposes ONLY!!!!!
+">False</WaNoBool>
+<WaNoBool name="outputraspa" description="Write a .cif file for RASPA (FF types in _atom_site_label) Write pseudo_atoms.def file for this MOF Write force_field_mixing_rules.def file for this MOF Write force_field.def file for this MOF">False</WaNoBool>
+		</WaNoRoot> 
+	<WaNoExecCommand>	
+		#	source /shared/software/anaconda3/etc/profile.d/conda.sh
+		module load anaconda3
+		conda activate
+		export PATH=$HOME/MOFsofts/bin:$PATH
+		touch dump_restart_string.txt   lammpstrj_to_element.txt lammps_raspa.cif pseudo_atoms.def lammps.debug.pdb lammps.debug.cif
+		python Lammps-Interface_input.py
+		lammps-interface $(cat options)
+		python fileedit.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="Lammps-Interface_input.py">Lammps-Interface_input.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="fileedit.py">fileedit.py</WaNoInputFile>
+
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+	<WaNoOutputFile>data.lammps</WaNoOutputFile>
+	<WaNoOutputFile>in.lammps</WaNoOutputFile>
+	<WaNoOutputFile>dump_restart_string.txt</WaNoOutputFile>
+	<WaNoOutputFile>lammpstrj_to_element.txt</WaNoOutputFile>
+	<WaNoOutputFile>lammps_raspa.cif</WaNoOutputFile>
+	<WaNoOutputFile>pseudo_atoms.def</WaNoOutputFile>
+	<WaNoOutputFile>lammps.debug.pdb</WaNoOutputFile>
+	<WaNoOutputFile>lammps.debug.cif</WaNoOutputFile>
+	
+	</WaNoOutputFiles>
+</WaNoTemplate>

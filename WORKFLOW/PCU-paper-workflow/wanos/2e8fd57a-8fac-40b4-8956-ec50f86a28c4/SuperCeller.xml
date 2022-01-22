@@ -1,0 +1,49 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi </Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo perform the SuperCeller that makes a xyz cartesian supercell file of the molecules from Achmol, and based on the lattice parameters that is taken from another file structure file with a lattice parameter (for example CONTCAR or POSCAR format). 
+ 		</Description>
+
+ 		<Keyword>MOFs,linker,center,make supercell</Keyword>
+	</WaNoMeta>
+	
+
+	<WaNoRoot name="SuperCeller">
+		<WaNoFile logical_filename="linkers.xyz" description="The input file name in xyz format. Example: linkers.xyz" name="XYZ_file" local="False">Parallel_1/1/Achmol/outputs/mole.xyz</WaNoFile>
+
+		<WaNoFile logical_filename="CONTCAR" description="The input file that provides the lattice parameters. Example: CONTCAR or POSCAR." name="Lattice_file" local="False">DFT-VASP/outputs/CONTCAR</WaNoFile>
+	
+		<WaNoInt name="Xrepeat" description="Repeat times in X direction">4</WaNoInt>
+		<WaNoInt name="Yrepeat" description="Repeat times in Y direction">4</WaNoInt>
+		<WaNoInt name="Zrepeat" description="Repeat times in Z direction">4</WaNoInt>
+
+
+
+
+
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+		#source /shared/software/anaconda3/etc/profile.d/conda.sh
+		module load anaconda3
+		conda activate
+		python SuperCeller_input.py
+		$HOME/MOFsofts/bin/superceller $(cat options)
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="SuperCeller_input.py">SuperCeller_input.py</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+        <WaNoOutputFile>qp_format_{{WaNo["Xrepeat"]}}_{{WaNo["Yrepeat"]}}_{{WaNo["Zrepeat"]}}.xyz</WaNoOutputFile>
+		<WaNoOutputFile>morphology_{{WaNo["Xrepeat"]}}_{{WaNo["Yrepeat"]}}_{{WaNo["Zrepeat"]}}.cml</WaNoOutputFile>
+		<WaNoOutputFile>cluster{{WaNo["Xrepeat"]}}_{{WaNo["Yrepeat"]}}_{{WaNo["Zrepeat"]}}.xyz</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>

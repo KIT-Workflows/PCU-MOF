@@ -1,0 +1,57 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi </Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo provide input files for lcmaker and AuToGraFs and is developed just for Prof. Dr. Christof Woell
+ 		</Description>
+
+ 		<Keyword>MOFs,linker,center,AuToGraFs</Keyword>
+	</WaNoMeta>
+	
+
+	<WaNoRoot name="lcmaker">
+	            <WaNoDropDown name="Topology">
+                <Entry id="0" chosen="True">pcu</Entry>
+                    <Entry id="1">sql</Entry>
+            </WaNoDropDown>
+
+			<WaNoFile logical_filename="Linker.xyz" description = "Upload a layer linker (includes two COOH groups). Example: alpha.xyz" name="Layer linker" local="True">Linker.xyz</WaNoFile>
+			<WaNoFile logical_filename="Pillar.xyz" description = "Upload a pillar linker (includes two N atoms). Example: beta.xyz" name="Pillar linker" local="True">Pillar.xyz</WaNoFile>
+		<WaNoDropDown name="Available SBUs" description= "Set the metal center (SBU) from the list" visibility_condition="%s == False" visibility_var_path="User SBU" >
+            <Entry id="0">Cu_pw6.inp</Entry>
+            <Entry id="1" chosen="True">Zn_pw6.inp</Entry>
+			<Entry id="2">Mn.inp</Entry>
+			<Entry id="3">Ni_pw6.inp</Entry>
+			<Entry id="4">Zn_mof_octahedral.inp</Entry>
+			<Entry id="5">Cu_pw4.inp</Entry>
+			<Entry id="6">Zn_pw4.inp</Entry>
+        </WaNoDropDown>
+		
+			<WaNoBool name="User SBU" description = 'Manually select SBU from your database. Example: center.inp'>False</WaNoBool>
+<WaNoFile logical_filename="Center.inp"  visibility_condition="%s == True" visibility_var_path="User SBU" description = "The input file name. Example: alpha.inp" name="SBU" local="True">Center.inp</WaNoFile>
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+		#source /shared/software/anaconda3/etc/profile.d/conda.sh
+		module load MOFsofts
+		python MOF_input.py $AuToGraFS_HOME/ase/database/centers/
+		python MOF-input_report.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="MOF_input.py">MOF_input.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="MOF-input_report.py">MOF-input_report.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+        <WaNoOutputFile>Linker.xyz</WaNoOutputFile>
+		<WaNoOutputFile>Pillar.xyz</WaNoOutputFile>
+		<WaNoOutputFile>Center.inp</WaNoOutputFile>		
+	</WaNoOutputFiles>
+</WaNoTemplate>

@@ -1,0 +1,4 @@
+Input-File: H20.vasp
+Input-Format: vasp
+Output-File-Name: test
+Output-Format: pdb

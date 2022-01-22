@@ -1,0 +1,175 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi </Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo perform the AuToGraFS to make the MOFs structure
+ 		</Description>
+
+ 		<Keyword>MOF,AuToGraFS</Keyword>
+	</WaNoMeta>
+	
+
+	<WaNoRoot name="AuToGraFS">
+		<WaNoDropDown   visibility_condition="%s == False" visibility_var_path="Extcontrol" name="Topology">
+<Entry id="0"  >acs</Entry>
+<Entry id="1"  >bcu</Entry>
+<Entry id="2"  >bnn</Entry>
+<Entry id="3"  >bor</Entry>
+<Entry id="4"  >cds</Entry>
+<Entry id="5"  >chs1_based_on_cgd</Entry>
+<Entry id="6"  >chs1</Entry>
+<Entry id="7"  >cpo27_cut2</Entry>
+<Entry id="8"  >cpo27_cut3</Entry>
+<Entry id="9"  >cpo27_old_notworking</Entry>
+<Entry id="10" >cpo27</Entry>
+<Entry id="11" >ctn</Entry>
+<Entry id="12" >dia_B1</Entry>
+<Entry id="13" >dia_B2</Entry>
+<Entry id="14" >dia_c3</Entry>
+<Entry id="15" >dia_c</Entry>
+<Entry id="16" >dia</Entry>
+<Entry id="17" >eta_c3</Entry>
+<Entry id="18" >eta_c4</Entry>
+<Entry id="19" >eta_c</Entry>
+<Entry id="20" >fcu</Entry>
+<Entry id="21" >flu</Entry>
+<Entry id="22" >fsc</Entry>
+<Entry id="23" >gar</Entry>
+<Entry id="24" >gea</Entry>
+<Entry id="25" >gez</Entry>
+<Entry id="26" >hcb</Entry>
+<Entry id="27" >hxg</Entry>
+<Entry id="28" >iac</Entry>
+<Entry id="29" >ibd</Entry>
+<Entry id="30" >ifi</Entry>
+<Entry id="31" >ins</Entry>
+<Entry id="32" >kgm</Entry>
+<Entry id="33" >lig_c</Entry>
+<Entry id="34" >lvt</Entry>
+<Entry id="35" >mab</Entry>
+<Entry id="36" >mfu4</Entry>
+<Entry id="37" >mil53</Entry>
+<Entry id="38" >mtn_e</Entry>
+<Entry id="39" >nbo</Entry>
+<Entry id="40" >ntt_46</Entry>
+<Entry id="41" >ntt</Entry>
+<Entry id="42" chosen="True">pcu</Entry>
+<Entry id="43" >pth</Entry>
+<Entry id="44" >pto</Entry>
+<Entry id="45" >pts</Entry>
+<Entry id="46" >ptt</Entry>
+<Entry id="47" >pyr_c</Entry>
+<Entry id="48" >pyr</Entry>
+<Entry id="49" >qom</Entry>
+<Entry id="50" >rho</Entry>
+<Entry id="51" >rhr</Entry>
+<Entry id="52" >rht</Entry>
+<Entry id="53" >rob</Entry>
+<Entry id="54" >rtl</Entry>
+<Entry id="55" >she</Entry>
+<Entry id="56" >soc</Entry>
+<Entry id="57" >sod</Entry>
+<Entry id="58" >spn</Entry>
+<Entry id="59" >sqc11248</Entry>
+<Entry id="60" >sqc12215</Entry>
+<Entry id="61" >sqc1560</Entry>
+<Entry id="62" >sqc19</Entry>
+<Entry id="63" >sqc8845</Entry>
+<Entry id="64" >sqc8955</Entry>
+<Entry id="65" >sqc963</Entry>
+<Entry id="66" >sql2</Entry>
+<Entry id="67" >sql6</Entry>
+<Entry id="68" >sql</Entry>
+<Entry id="69" >sqp_B1</Entry>
+<Entry id="70" >sqp_B2</Entry>
+<Entry id="71" >sra_c</Entry>
+<Entry id="72" >sra</Entry>
+<Entry id="73" >srs_a_c</Entry>
+<Entry id="74" >srs_c3</Entry>
+<Entry id="75" >srs_c4</Entry>
+<Entry id="76" >srs_c4s</Entry>
+<Entry id="77" >srs_c8</Entry>
+<Entry id="78" >srs_c</Entry>
+<Entry id="79" >srs_cs</Entry>
+<Entry id="80" >srs</Entry>
+<Entry id="81" >stp</Entry>
+<Entry id="82" >tbo</Entry>
+<Entry id="83" >tcs</Entry>
+<Entry id="84" >Td</Entry>
+<Entry id="85" >the</Entry>
+<Entry id="86" >ths_c</Entry>
+<Entry id="87" >ths</Entry>
+<Entry id="88" >twt_c3</Entry>
+<Entry id="89" >twt_c</Entry>
+<Entry id="90" >zmj</Entry>
+            </WaNoDropDown>
+			<WaNoFile logical_filename="Center.inp"  visibility_condition="%s == False" visibility_var_path="Extcontrol" description = 'Select SBU (metal node) in inp format.'  name="Center">Center.inp</WaNoFile>			
+
+			<WaNoFile logical_filename="Linker.inp"   visibility_condition="%s == False" visibility_var_path="Extcontrol" description = 'Select the main (e.g. layer) linker in inp format. Use "Pillar linker" and "Third linker", when they are not identical to the main linker.'  name="Linker">Linker.inp</WaNoFile>
+			
+             <WaNoBool name="Pillar linker"   visibility_condition="%s == False" visibility_var_path="Extcontrol"  description ="Select the second (e.g. pillar) linker in inp format."  >False</WaNoBool>
+
+            <WaNoFile logical_filename="Plinker.inp" visibility_condition="%s == True" visibility_var_path="Pillar linker" name="Plinker">Plinker.inp</WaNoFile>
+
+            <WaNoBool name="Third linker"   visibility_condition="%s == False" visibility_var_path="Extcontrol"  description ="If three different linkers are used, select the third linker in inp format here.">False</WaNoBool>
+
+            <WaNoFile logical_filename="Tlinker.inp" visibility_condition="%s == True" visibility_var_path="Third linker" name="Tlinker">Tlinker.inp</WaNoFile>
+
+	        <WaNoBool name="Optional" description = 'Optional features of AuToGraFS'>False</WaNoBool>		
+			
+			<WaNoFloat name="Zdistance"  visibility_condition="%s == True" visibility_var_path="Optional"   description= "Enter intitial Z distance for SQL MOF GULP optimization. Default: 25 Angstroems. Too small Z distance may generate wrong MOF structure.">0</WaNoFloat>
+
+           <WaNoBool name="Extcontrol"  visibility_condition="%s == True" visibility_var_path="Optional"  description ="For the user-defined control.txt file">False</WaNoBool>
+            <WaNoFile logical_filename="control.txt" visibility_condition="%s == True" visibility_var_path="Extcontrol" name="control.txt">control.txt</WaNoFile>
+    
+            <WaNoFile logical_filename="database.tar.gz" description = 'Base path for centers, linkers and functional groups, Default: by default it uses the database that is created from user input.' visibility_condition="%s == True" visibility_var_path="Extcontrol" name="database">database.tar.gz</WaNoFile>
+
+			<WaNoBool name="Output prefix"  visibility_condition="%s == True" visibility_var_path="Optional"  description = 'Output file of the generated MOF (without postfix). Default=mof'>False</WaNoBool>
+			<WaNoString name="output_prefix" visibility_condition="%s == True" visibility_var_path="Output prefix" local="True" >mof</WaNoString>
+
+			<WaNoBool name="OUTPUT EXTN"  visibility_condition="%s == True" visibility_var_path="Optional"  description = 'The AuToGraFS output format(extension). Default=.gin'>False</WaNoBool>
+			<WaNoString name="OUTPUT_EXTN" visibility_condition="%s == True" visibility_var_path="OUTPUT EXTN" local="True" >gin</WaNoString>
+
+			<WaNoBool name="Set supercell"  visibility_condition="%s == True" visibility_var_path="Optional"  description= "Optional production of supercell. Default is None. Argument may be one integer or three.">False</WaNoBool>
+        	<WaNoMatrixFloat rows="1" cols="3" col_header="a; b; c"  name="supercell" row_header=""	visibility_condition="%s == True" visibility_var_path="Set supercell">[[0,0,0]]</WaNoMatrixFloat>
+
+			<WaNoBool name="leave_ghosts"   visibility_condition="%s == True" visibility_var_path="Optional" description= "Leave extra ghost (Bq) atoms in structure for post functionalisation.">False</WaNoBool>
+
+			<WaNoBool name="no-leave_ghosts" visibility_condition="%s == True" visibility_var_path="Optional"  description= "Leave extra ghost (Bq) atoms in structure for post functionalisation.">False</WaNoBool>
+
+	</WaNoRoot>
+	
+	<WaNoExecCommand>	
+		#source /shared/software/anaconda3/etc/profile.d/conda.sh
+		module load anaconda3
+		conda activate
+		module load MOFsofts
+
+		python AuToGraFS_input.py
+		conda activate py2
+		PYTHON2=$(which python2)
+		MOFGEN=$(which mofgen.py)
+		$PYTHON2 $MOFGEN $(cat options)
+		conda activate base
+		python Zdistance.py
+		python AuToGraFS_report.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="AuToGraFS_input.py">AuToGraFS_input.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="Zdistance.py">Zdistance.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="AuToGraFS_report.py">AuToGraFS_report.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+		<WaNoOutputFile>{{ WaNo["output_prefix"] }}.xyz</WaNoOutputFile>
+		<WaNoOutputFile>{{ WaNo["output_prefix"] }}.{{ WaNo["OUTPUT_EXTN"] }}</WaNoOutputFile>
+		<WaNoOutputFile>control.txt</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>

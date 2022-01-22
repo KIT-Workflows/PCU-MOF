@@ -1,0 +1,2 @@
+# Achmol
+This WaNo performs the **Achmol**. The Achmol accepts the CONTCAR, vasprun.xml, or other ASE-supported file formats with a periodic MOF structure(currently just PCU and SQL topology). It extracts the structure, separates the linkers by removing metal atoms, finds the nearest linkers based on the bonds, and adds hydrogen to needed palaces. In the end, it makes a suitable file for the Quantum Patch package.

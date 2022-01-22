@@ -1,0 +1,15 @@
+<html>
+<h1> Format-Converter </h1>
+
+<p style="color:blue;font-size:16px;">
+  This WaNo uses ASE technology to convert a file from x to y
+    format, e.g., .xyz to .cif or vice-versa. See the options.
+</p>
+
+<p style="color:blue;font-size:16px;">Below are the inputs used in this WaNo.</p>
+
+{% for key, value in output_dict.items() %}
+  <p style="color:black;font-size:16px;"> {{ key }}: {{value}}</p>
+{% endfor %}
+
+</html>

@@ -1,0 +1,47 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi</Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+			This WaNo performs the force field calculation using LAMMPS code.
+ 		</Description>
+
+ 		<Keyword>DFT</Keyword>
+	</WaNoMeta>
+	
+	<WaNoRoot name="LAMMPS">
+
+			<WaNoBool name="restart" description="Using LAMMPS based gpu">False</WaNoBool>
+			<WaNoFile logical_filename="in.lammps" description="The main input file for lammps configuration" name="LAMMPS INPUT" local="False">Parallel_1/0/lammps-interface/outputs/in.lammps</WaNoFile>
+			<WaNoFile logical_filename="data.lammps" description="The main input file for lammps for positions, masses, force field parameters and etc" name="LAMPPS data" local="False">Parallel_1/0/lammps-interface/outputs/data.lammps</WaNoFile>
+			
+			<WaNoBool name="restart" description="This is the file for restart option">True</WaNoBool>
+			<WaNoFile logical_filename="dump_restart_string.txt" visibility_condition="%s == True" visibility_var_path="restart" name="restart_file" local="False">Parallel_1/0/lammps-interface/outputs/dump_restart_string.txt</WaNoFile>
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+		module purge
+		module load anaconda3
+		module load lammps
+		module load prun
+		conda activate
+		touch lammps_mov.xyz lammps_mov.dcd lammps_mov.lammpstrj
+		#set the corect path of your lammps in below 
+		LAMMPS=$(which lmp)
+		prun $LAMMPS -in in.lammps
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+	</WaNoInputFiles>
+	
+	<WaNoOutputFiles>
+		<WaNoOutputFile>log.lammps</WaNoOutputFile>
+		<WaNoOutputFile>lammps_mov.xyz</WaNoOutputFile>
+		<WaNoOutputFile>lammps_mov.dcd</WaNoOutputFile>
+		<WaNoOutputFile>lammps_mov.lammpstrj</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>

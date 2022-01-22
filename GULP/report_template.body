@@ -1,0 +1,14 @@
+<html>
+<h1> GULP </h1>
+
+<p style="color:blue;font-size:16px;">
+    This WaNo perform the GULP.
+</p>
+
+<p style="color:blue;font-size:16px;">Below are the inputs used in this WaNo.</p>
+
+{% for key, value in output_dict.items() %}
+  <p style="color:black;font-size:16px;"> {{ key }}: {{value}}</p>
+{% endfor %}
+
+</html>

@@ -1,0 +1,89 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi </Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo perform the LCmaker to make the linker and center inp file for AuToGraFs 
+ 		</Description>
+
+ 		<Keyword>MOFs,linker,center,AuToGraFs</Keyword>
+	</WaNoMeta>
+	
+
+	<WaNoRoot name="LCmaker">
+			<WaNoFile logical_filename="linker" description = "Select a linear (default) linker. Example: alpha.xyz. For more linkers and SBUs, check in Optional" name="Input file">linker</WaNoFile>
+			<WaNoString name="Input format" description = "The input file extension(format). Example: xyz" local = "True">xyz</WaNoString>
+			
+			<WaNoBool name="Optional" description = 'User-defined linker and SBU features, e.g. dummies, shape etc. '>False</WaNoBool>
+			<WaNoString name="Dummy" description= 'Set indices of atoms (based on their indices in "ase gui") to put dummies near them. Each index should be separated by ",". Example 12,5. To exchange dummies, check "Xplace" below. Default: If it is empty, it finds the carboxylic acids or nitrogen atoms and put the dummies instead or next to them.   ' visibility_condition="%s == True" visibility_var_path="Optional" local="True">None</WaNoString>
+			<WaNoString name="Remove atoms" description = 'Set indices of atoms (based on their indices in "ase gui") to remove them (e.g. COOH). Each index should be separated by ",". Example 12,5' visibility_condition="%s == True" visibility_var_path="Optional" local="True">None</WaNoString>
+
+		<WaNoString name="Output" visibility_condition="%s == True" visibility_var_path="Optional" description = "The output name of the linker or SBU (without file extension). Example: linker" local="True">linker</WaNoString>
+
+		<WaNoDropDown name="SBU" description = 'Set the secondary building units (SBU) type. linker or center' visibility_condition="%s == True" visibility_var_path="Optional" >
+            <Entry id="0" chosen="True">linker</Entry>
+            <Entry id="1">center</Entry>
+        </WaNoDropDown>
+
+		<WaNoDropDown name="Shape" description= "Set the Shape of SBU from the list" visibility_condition="%s == True" visibility_var_path="Optional" >
+            <Entry id="0">point_cap</Entry>
+            <Entry id="1" chosen="True">linear</Entry>
+			<Entry id="2">triangle</Entry>
+			<Entry id="3">rectangle</Entry>
+			<Entry id="4">square</Entry>
+			<Entry id="5">hexagon</Entry>
+			<Entry id="6">tetrahedral</Entry>
+			<Entry id="7">octahedral</Entry>
+			<Entry id="8">cube</Entry>
+			<Entry id="9">cpo27</Entry>
+			<Entry id="10">mfu4</Entry>
+			<Entry id="11">gyrobifastigium</Entry>
+			<Entry id="12">rhombicuboctahedron</Entry>
+			<Entry id="13">cuboctahedron</Entry>
+			<Entry id="14">trigonal_bipyramid</Entry>
+			<Entry id="15">mil53</Entry>
+			<Entry id="16">square_pyramid</Entry>
+			<Entry id="17">tri_prism</Entry>
+			<Entry id="18">elongated_triangular_orthobicupola</Entry>
+        </WaNoDropDown>
+
+          
+	    <WaNoBool name="Xplace"  visibility_condition="%s == True" visibility_var_path="Optional" description = "If you want to replace dummies with the atoms in the dummy option, turn on this option. Default: It puts dummies at the near of the atoms indexed in dummy, or the dummies that it finds them automatically." >False</WaNoBool>
+		<WaNoBool name="AuToGraFs"  visibility_condition="%s == True" visibility_var_path="Optional" description = "The path to the AuToGraFs directory where the mol2inp file is there. Dont Change it if it works. Default: /shared/software/chem/MOFsofts/autografs" >False</WaNoBool>
+		<WaNoString name="AuToGraFs PATH" visibility_condition="%s == True" visibility_var_path="AuToGraFs" local="True">/shared/software/chem/MOFsofts/autografs</WaNoString>
+		<WaNoDropDown  name="Linker_type"  visibility_condition="%s == True" visibility_var_path="Optional" description= "If you want the xyz file for the new version of AuToGraFs(equal or greater than version 2.0), please select xyz. Default: for Autografs before version 2.0, which creates inp linkers and centers.">
+            <Entry id="0" chosen="True">inp</Entry>
+            <Entry id="1">xyz</Entry>
+        </WaNoDropDown>
+
+
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+		#source /shared/software/anaconda3/etc/profile.d/conda.sh
+		module load MOFsofts
+		python LCmaker_input.py
+		PYTHON3=$(which python3)
+		conda activate py2
+		#export PATH=/shared/software/anaconda3/envs/py2/bin/:$PATH
+		#export LD_LIBRARY_PATH=/shared/software/anaconda3/envs/py2/lib/:$LD_LIBRARY_PATH
+		PYTHON2=$(which python2)
+		LCMAKER=$(which LCmaker)
+		$PYTHON3 $LCMAKER $(cat options)
+		python LCmaker_report.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="LCmaker_input.py">LCmaker_input.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
+		<WaNoInputFile logical_filename="LCmaker_report.py">LCmaker_report.py</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+        <WaNoOutputFile>{{ WaNo["Output"] + "_linker." + "inp" }}</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>

@@ -1,0 +1,23 @@
+{
+    "workflow_environment":"SimStack",
+    "title": "AuToGraFS",
+    "description": "This WaNo performs AuToGraFS",
+    "authors": [
+        "Mersad Mostaghimi"
+    ],
+    "version": "0.0.1",
+    "logo": "AuToGraFS.png",
+    "release": {
+        "latest_release_date": "e.g., 2021-04-28",
+        "latest_release_tag": "e.g., 0.0.1"
+    },
+    
+    "steps/codes":[
+        "step1, e.g., AutoGrafs"
+    ],
+    "keywords": [
+        "MOF",
+        "structure"
+    ]
+}
+
