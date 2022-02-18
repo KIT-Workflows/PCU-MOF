@@ -84,6 +84,6 @@
 	</WaNoInputFiles>
 
 	<WaNoOutputFiles>
-        <WaNoOutputFile>{{ WaNo["Output"] + "_linker." + "inp" }}</WaNoOutputFile>
+        <WaNoOutputFile>{{ wano["Output"] + "_linker." + "inp" }}</WaNoOutputFile>
 	</WaNoOutputFiles>
 </WaNoTemplate>
