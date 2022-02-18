@@ -168,8 +168,8 @@
 	</WaNoInputFiles>
 
 	<WaNoOutputFiles>
-		<WaNoOutputFile>{{ WaNo["output_prefix"] }}.xyz</WaNoOutputFile>
-		<WaNoOutputFile>{{ WaNo["output_prefix"] }}.{{ WaNo["OUTPUT_EXTN"] }}</WaNoOutputFile>
+		<WaNoOutputFile>{{ wano["output_prefix"] }}.xyz</WaNoOutputFile>
+		<WaNoOutputFile>{{ wano["output_prefix"] }}.{{ wano["OUTPUT_EXTN"] }}</WaNoOutputFile>
 		<WaNoOutputFile>control.txt</WaNoOutputFile>
 	</WaNoOutputFiles>
 </WaNoTemplate>
