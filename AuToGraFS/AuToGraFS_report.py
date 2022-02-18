@@ -2,7 +2,7 @@ import yaml
 
 if __name__ == '__main__':
 
-    with open("rendered_WaNo.yml") as file:
+    with open("rendered_wano.yml") as file:
         WaNo_file = yaml.full_load(file)
 
     with open("output_dict.yml",'w') as out:

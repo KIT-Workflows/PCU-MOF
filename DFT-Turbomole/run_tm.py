@@ -5,16 +5,16 @@ import ase.io
 
 #######################################################################
 ###                                                                 ###
-### prerequisite files: rendered_WaNo.yml, initial_structure.xyz (coord_0) ###
+### prerequisite files: rendered_wano.yml, initial_structure.xyz (coord_0) ###
 ###                                                                 ###
 #######################################################################
 
-def get_settings_from_rendered_WaNo():
+def get_settings_from_rendered_wano():
 
     disp_dict={'None':'off','D2':'old','D3':'on','D3-BJ':'bj','D4':'d4'}
 
     settings=dict()
-    with open('rendered_WaNo.yml') as infile:
+    with open('rendered_wano.yml') as infile:
         WaNo_file = yaml.full_load(infile)
     
     settings['title']=WaNo_file['Title']
@@ -62,10 +62,10 @@ def sanitize_multiplicity(multi,n_el):
 
 if __name__ == '__main__':
     
-    settings=get_settings_from_rendered_WaNo()
+    settings=get_settings_from_rendered_wano()
     if settings['follow-up']: 
         os.system('mkdir old_results; tar -xf old_calc.tar.xz -C old_results')
-        with open('old_results/rendered_WaNo.yml') as infile:
+        with open('old_results/rendered_wano.yml') as infile:
             old_settings = yaml.full_load(infile)
         settings['title']=old_settings['Title']
 
@@ -183,7 +183,7 @@ if __name__ == '__main__':
 
     with open('results.yml','w') as outfile: yaml.dump(results_dict,outfile)
 
-    output_files=['alpha','auxbasis','basis','beta','control','coord','energy','forceapprox','gradient','hessapprox','mos','optinfo','rendered_WaNo.yml']
+    output_files=['alpha','auxbasis','basis','beta','control','coord','energy','forceapprox','gradient','hessapprox','mos','optinfo','rendered_wano.yml']
     for filename in output_files:
         if not os.path.isfile(filename): output_files.remove(filename)
 

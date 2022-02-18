@@ -6,7 +6,7 @@ import  yaml , tarfile , os,shutil
 from ast import literal_eval
 
 if __name__ == '__main__':
-    with open('rendered_WaNo.yml') as file:
+    with open('rendered_wano.yml') as file:
         WaNo_file = yaml.full_load(file)
     if float(WaNo_file["Zdistance"]) :
         with open("%s.%s" %(WaNo_file["output_prefix"],WaNo_file["OUTPUT_EXTN"] ) ,"r") as mainfile:

@@ -14,7 +14,7 @@ def utf8_dec(var):
 def make_define_str(settings,coord):
     
     if settings['use old mos']:
-        with open('old_results/rendered_WaNo.yml') as infile:
+        with open('old_results/rendered_wano.yml') as infile:
             old_settings = yaml.full_load(infile)
         same_basis = old_settings['Basis set']['Basis set type'] == settings['basis set']
 

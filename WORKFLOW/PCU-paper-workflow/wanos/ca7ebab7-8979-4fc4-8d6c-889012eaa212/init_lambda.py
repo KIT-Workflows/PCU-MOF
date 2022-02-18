@@ -8,7 +8,7 @@ import yaml
 from yaml import CLoader
 
 if __name__ == "__main__":
-    with open("rendered_WaNo.yml", "r") as WaNoin:
+    with open("rendered_wano.yml", "r") as WaNoin:
         WaNo = yaml.load(WaNoin, Loader=CLoader)
     engines = []
     for engine in WaNo["Tabs"]["Engines"]["DFT Engines"]:

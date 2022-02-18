@@ -1,6 +1,6 @@
 import yaml
 if __name__ == '__main__':
-    with open('rendered_WaNo.yml') as file:
+    with open('rendered_wano.yml') as file:
         WaNo_file = yaml.full_load(file)
     if WaNo_file["Fix_cell"]:
         with open("data.lammps","r") as datain:

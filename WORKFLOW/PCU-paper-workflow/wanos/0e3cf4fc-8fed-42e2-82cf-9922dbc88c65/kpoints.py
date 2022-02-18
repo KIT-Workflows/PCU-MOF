@@ -16,7 +16,7 @@ if __name__ == '__main__':
         print("KPOINTS already loaded")
         exit
     else:
-        with open('rendered_WaNo.yml') as file:
+        with open('rendered_wano.yml') as file:
                 WaNo_file = yaml.full_load(file)
 
         Rk = WaNo_file["TABS"]["KPOINTS"]["Kpoints_length"]

@@ -3,7 +3,7 @@ This code generates the option for running AuToGraFs
 """
 import yaml  , shutil
 if __name__ == '__main__':
-    with open('rendered_WaNo.yml') as file:
+    with open('rendered_wano.yml') as file:
         WaNo_file = yaml.full_load(file)
     shutil.copyfile(WaNo_file["Input file"],"%s.%s" %(WaNo_file["Output"],WaNo_file["Input format"]))
     with open("options","w") as opt_file:

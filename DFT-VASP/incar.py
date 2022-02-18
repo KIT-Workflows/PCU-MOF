@@ -190,7 +190,7 @@ def check_Band_structure(dict_Analysis, dict_INCAR):
 
 if __name__ == '__main__':
 
-    with open('rendered_WaNo.yml') as file:
+    with open('rendered_wano.yml') as file:
         WaNo_file = yaml.full_load(file)
 ##############################################################################
 

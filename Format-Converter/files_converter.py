@@ -18,7 +18,7 @@ def check_xyz_cell(struct):
     print(struct.get_cell())
     return struct
 
-with open('rendered_WaNo.yml') as file:
+with open('rendered_wano.yml') as file:
     WaNo_file = yaml.full_load(file)
 
 input_file = WaNo_file["Input-File"]

@@ -5,7 +5,7 @@ import yaml  , shutil
 #import tarfile 
 from ast import literal_eval
 if __name__ == '__main__':
-    with open('rendered_WaNo.yml') as file:
+    with open('rendered_wano.yml') as file:
         WaNo_file = yaml.full_load(file)
     with open("options","w") as opt_file:
 

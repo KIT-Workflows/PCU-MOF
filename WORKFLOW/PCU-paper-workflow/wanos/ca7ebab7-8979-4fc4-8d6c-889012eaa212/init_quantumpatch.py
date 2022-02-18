@@ -13,7 +13,7 @@ class QuantumPatchWaNoError(Exception):
 
 
 if __name__ == "__main__":
-    with open("rendered_WaNo.yml", "r") as WaNoin:
+    with open("rendered_wano.yml", "r") as WaNoin:
         WaNo = yaml.load(WaNoin, Loader=CLoader)
     with open("qp_settings_template.yml", "r") as qpngin:
         cfg = yaml.load(qpngin, Loader=CLoader)  # Script will modify this and re-write it
