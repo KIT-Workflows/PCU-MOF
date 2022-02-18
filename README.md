@@ -30,10 +30,6 @@ If you want to use HPC resources of AG Wenzel (with already installed all necess
 
 If you have access to the AG Wenzel HPC, copy the `WORKFLOW/PCU-paper-workflow` in the workflow directory of your SimStack. After loading the SimStack, the workflow can be loaded and used straightly.
 
-If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
-LAMMPS, Achmol, SuperCeller*, cite us:
->M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
-
 ### Software installation
 The best method for installing the software is installing [ANACONDA](https://docs.anaconda.com/anaconda/install/index.html) with the following libraries:
 
@@ -58,11 +54,11 @@ If you just copied MOFsofts without module environment, export the following pat
 
 ```
 export PATH=/shared/software/chem/MOFsofts/bin:$PATH
-export PATH=/shared/software/chem/MOFsofts/autografs:$PATH
-AuToGraFS_HOME=/shared/software/chem/MOFsofts/autografs
+export PATH=/shared/software/chem/MOFsofts/AuToGraFS:$PATH
+AuToGraFS_HOME=/shared/software/chem/MOFsofts/AuToGraFS
 ```
 
-Also for running lcmaker we need python2 that can run AuToGraFs. [Here](https://docs.anaconda.com/anaconda/user-guide/tasks/switch-environment/) is a document that explain the installation of python2 environment on anaconda3:
+Also for running lcmaker we need python2 that can run AuToGraFS. [Here](https://docs.anaconda.com/anaconda/user-guide/tasks/switch-environment/) is a document that explain the installation of python2 environment on anaconda3:
 Create a Python 2 environment named py2, install Python 2.7:
 
 ```
@@ -85,7 +81,7 @@ macOS, Linux:
 conda activate py2
 ```
 
-After activation of py2 environment, the library for AuToGraFs must be installed:
+After activation of py2 environment, the library for AuToGraFS must be installed:
 
 ```
 ase, scipy, numpy<1.15.0
@@ -103,10 +99,10 @@ swig
 Eigen > 2
 ```
 #### AuToGraFS
-We used a costomized version of AuToGraFs that is available in autografs directory. It is based on the python 2 and call the mofgen.py file to run. to install it, copy the dirextory on your system and export the path in your shell. for bash :
+We used a costomized version of AuToGraFS that is available in AuToGraFS directory. It is based on the python 2 and call the mofgen.py file to run. to install it, copy the dirextory on your system and export the path in your shell. for bash :
 
 ```
-export PATH=PATH_TO_autografs_DIR:$PATH
+export PATH=PATH_TO_AuToGraFS_DIR:$PATH
 ```
 
 Caution:
@@ -138,8 +134,13 @@ export  PYTHONPATH=/opt/obabel/3.1.1/lib:$PYTHONPATH
 ```
 
 CAUTION:
-Edit all WaNos xml files in the way that passes the required software (anaconda, openbable, autografs).
+Edit all WaNos xml files in the way that passes the required software (anaconda, openbable, AuToGraFS).
 For the MOFsofts software, please communicate with Mersad.Mostaghimi@kit.edu.
+
+### Cite us
+If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
+LAMMPS, Achmol, SuperCeller*, cite us:
+>M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
 
 If you are interested in further WaNos development for your specific case, contact us via mariana.kozlowska@kit.edu and wolfgang.wenzel@kit.edu
 
