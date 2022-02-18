@@ -42,8 +42,8 @@
 	</WaNoInputFiles>
 
 	<WaNoOutputFiles>
-        <WaNoOutputFile>qp_format_{{WaNo["Xrepeat"]}}_{{WaNo["Yrepeat"]}}_{{WaNo["Zrepeat"]}}.xyz</WaNoOutputFile>
-		<WaNoOutputFile>morphology_{{WaNo["Xrepeat"]}}_{{WaNo["Yrepeat"]}}_{{WaNo["Zrepeat"]}}.cml</WaNoOutputFile>
-		<WaNoOutputFile>cluster{{WaNo["Xrepeat"]}}_{{WaNo["Yrepeat"]}}_{{WaNo["Zrepeat"]}}.xyz</WaNoOutputFile>
+        <WaNoOutputFile>qp_format_{{wano["Xrepeat"]}}_{{wano["Yrepeat"]}}_{{wano["Zrepeat"]}}.xyz</WaNoOutputFile>
+		<WaNoOutputFile>morphology_{{wano["Xrepeat"]}}_{{wano["Yrepeat"]}}_{{wano["Zrepeat"]}}.cml</WaNoOutputFile>
+		<WaNoOutputFile>cluster{{wano["Xrepeat"]}}_{{wano["Yrepeat"]}}_{{wano["Zrepeat"]}}.xyz</WaNoOutputFile>
 	</WaNoOutputFiles>
 </WaNoTemplate>
