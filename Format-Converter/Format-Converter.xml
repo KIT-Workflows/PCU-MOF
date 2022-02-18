@@ -48,7 +48,7 @@
         </WaNoInputFiles>
 
         <WaNoOutputFiles>
-                <WaNoOutputFile>{{ WaNo["Output-File-Name"] + "." +WaNo["Output-Format"] }}</WaNoOutputFile>
+                <WaNoOutputFile>{{ wano["Output-File-Name"] + "." +wano["Output-Format"] }}</WaNoOutputFile>
         </WaNoOutputFiles>
 </WaNoTemplate>
 
