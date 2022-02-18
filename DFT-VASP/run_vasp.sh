@@ -3,8 +3,8 @@
 set -e
 module purge
 module load vasp prun
-{% if WaNo["TABS"]["Files_Run"]["SOC"] -%}
+{% if wano["TABS"]["Files_Run"]["SOC"] -%}
 {{ "prun vasp_ncl"  }}
 {% else %}
-{{ "prun" }} {{ WaNo["TABS"]["Files_Run"]["prun_vasp"] }}
+{{ "prun" }} {{ wano["TABS"]["Files_Run"]["prun_vasp"] }}
 {%- endif %}

@@ -1,8 +1,8 @@
-import pymatgen
-from pymatgen.core.structure import Structure, Lattice
+#import pymatgen
+from pymatgen.core import Structure, Lattice
 from pymatgen.io.vasp import Incar, Poscar, Potcar, Kpoints
-from pymatgen.io.vasp.sets import MPRelaxSet
-import os, sys, re, yaml
+#from pymatgen.io.vasp.sets import MPRelaxSet
+import os, yaml
 
 def get_VASP_inputs(structure):
     #poscar  = Poscar(structure)
@@ -22,7 +22,7 @@ def get_VASP_inputs(structure):
                         
                         ## Ionic relaxation:  
                         NSW     =   150,         # Maximum number of ionic steps
-                        EDIFFG  = -0.025,        # stop if all forces are smaller than |EDIFFG|
+                        EDIFFG  = -0.020,        # stop if all forces are smaller than |EDIFFG|
                         IBRION  = 2,         
                         ISIF    = 3,             # Controls the computation of stress tensor. 3 computes everything
                         POTIM   = 0.010,
@@ -112,6 +112,21 @@ def check_vdw_functional(dict_INCAR):
         dict_INCAR = check_IVDW(dict_INCAR)
     return dict_INCAR
 
+def check_hybrid_functionals(dict_INCAR):
+    var_value = dict_INCAR.get('GGA')
+    if var_value == 'HSE03':
+        dict_INCAR['GGA'] = "PE"
+        dict_INCAR['LHFCALC'] = ".TRUE."
+        dict_INCAR['HFSCREEN'] = 0.3000
+    elif var_value == 'HSE06':
+        dict_INCAR['GGA'] = 'PE'
+        dict_INCAR['LHFCALC'] = '.TRUE.'
+        dict_INCAR['HFSCREEN'] = 0.2000
+    else:
+        dict_INCAR['GGA'] = var_value
+
+    return dict_INCAR
+
 def check_SOC(dict_INCAR):
     if "SOC" in dict_INCAR.keys() and dict_INCAR["SOC"] == True:
         dict_INCAR["LASPH"] = ".TRUE."
@@ -191,7 +206,7 @@ def check_Band_structure(dict_Analysis, dict_INCAR):
 if __name__ == '__main__':
 
     with open('rendered_wano.yml') as file:
-        WaNo_file = yaml.full_load(file)
+        wano_file = yaml.full_load(file)
 ##############################################################################
 
     # Create bash file
@@ -205,10 +220,10 @@ if __name__ == '__main__':
         f.write('module load vasp prun\n')
         f.write('\n')
 
-        if WaNo_file["TABS"]["INCAR"]["SOC"]:
+        if wano_file["TABS"]["INCAR"]["SOC"]:
             f.write('prun vasp_ncl\n')
         else: 
-            f.write('prun ' + WaNo_file["TABS"]["Files_Run"]["prun_vasp"])
+            f.write('prun ' + wano_file["TABS"]["Files-Run"]["prun_vasp"])
 
     os.system("chmod +x " + file_name)
   
@@ -220,7 +235,7 @@ if __name__ == '__main__':
         dict_INCAR = get_VASP_inputs(structure)
 
         # Reading the inputs for INCAR file
-        for var_key, var_value in WaNo_file["TABS"]["INCAR"].items():
+        for var_key, var_value in wano_file["TABS"]["INCAR"].items():
             if var_key in dict_INCAR.keys():
                 dict_INCAR[var_key] = var_value
                 print(var_key, var_value)
@@ -229,10 +244,14 @@ if __name__ == '__main__':
 
         dict_Analysis = {}
 
-        for var_key, var_value in WaNo_file["TABS"]["Analysis"].items():
-            dict_Analysis[var_key] = var_value    
+        for var_key, var_value in wano_file["TABS"]["Analysis"].items():
+            if var_key == 'ENCUT':
+                var_value = float(var_value)
+            
+            dict_Analysis[var_key] = var_value     
 
         dict_INCAR = check_vdw_functional(dict_INCAR)
+        dict_INCAR = check_hybrid_functionals(dict_INCAR)
         dict_INCAR = check_SOC(dict_INCAR)
         dict_INCAR = check_MD(dict_INCAR)
 
