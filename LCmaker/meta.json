@@ -1,6 +1,6 @@
 {
     "workflow_environment":"SimStack",
-    "title": "AuToGraFs",
+    "title": "LCmaker",
     "description": "This WaNo performs LCmaker",
     "authors": [
         "Mersad Mostaghimi"
