@@ -1,25 +1,25 @@
 {
     "workflow_environment":"SimStack",
-    "title": "AuToGraFs",
-    "description": "This WaNo performs lcmaker",
+    "title": "GULP",
+    "description": "This WaNo performs GULP",
     "authors": [
         "Mersad Mostaghimi"
     ],
     "version": "0.0.1",
-    "logo": "lcmaker.png",
+    "logo": "GULP.png",
     "release": {
         "latest_release_date": "e.g., 2021-04-28",
         "latest_release_tag": "e.g., 0.0.1"
     },
     
     "steps/codes":[
-        "step1, e.g., AutoGrafs"
+        "step1, e.g., GULP"
     ],
     "keywords": [
         "MOF",
         "structure",
-	"linker",
-	"center"
+	"optimization",
+	"UFF4MOF"
     ]
 }
 

@@ -6,14 +6,14 @@
         "Mersad Mostaghimi"
     ],
     "version": "0.0.1",
-    "logo": "lcmaker.png",
+    "logo": "Achmol.png",
     "release": {
         "latest_release_date": "e.g., 2021-04-28",
         "latest_release_tag": "e.g., 0.0.1"
     },
     
     "steps/codes":[
-        "step1, e.g., AutoGrafs"
+        "step1, e.g., Achmol"
     ],
     "keywords": [
         "MOF",
