@@ -1,4 +1,4 @@
-# PCU-MOF Workflow  [![DOI](https://zenodo.org/badge/450835577.svg)](https://zenodo.org/badge/latestdoi/450835577)
+# PCU-MOF Workflow  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5893325.svg)](https://doi.org/10.5281/zenodo.5893325)
 
 This repository provides the WaNos used in the PCU-MOF Workflow. This workflow is built with the [Simstack](https://www.simstack.de/) framework automates the construction, optimization, and prediction of electronic properties of the PCU topology of metal-organic frameworks. The PCU-MOF workflow consists of three central parts: (1) **MOF Builder**, (2) **MOF Optimizer** and (3) **MOF Analyzer**. 
 
