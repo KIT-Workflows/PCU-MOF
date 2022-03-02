@@ -1,0 +1,25 @@
+{
+    "workflow_environment":"SimStack",
+    "title": "LCmaker",
+    "description": "This WaNo performs LCmaker",
+    "authors": [
+        "Mersad Mostaghimi"
+    ],
+    "version": "0.0.1",
+    "logo": "LCmaker.png",
+    "release": {
+        "latest_release_date": "e.g., 2021-04-28",
+        "latest_release_tag": "e.g., 0.0.1"
+    },
+    
+    "steps/codes":[
+        "step1, e.g., AutoGrafs"
+    ],
+    "keywords": [
+        "MOF",
+        "structure",
+	"linker",
+	"center"
+    ]
+}
+

@@ -1,29 +1,29 @@
 <root>
-  <WaNo type="MOF-input" uuid="67a0674c-275d-4de0-9833-3b31c810338b" id="0" name="MOF-input"/>
+  <WaNo type="MOF-input" uuid="a3527912-693b-4c34-a742-c5439bfddd63" id="0" name="MOF-input"/>
   <WFControl name="Parallel" type="Parallel">
     <WFControl name="SubWF" type="SubWorkflow">
-      <WaNo type="DFT-Turbomole" uuid="ef1ed333-77dc-4036-a325-cbcd62e60829" id="0" name="DFT-Turbomole"/>
-      <WaNo type="lcmaker" uuid="75b96ba9-d828-4c17-856f-c81ac5438d0b" id="1" name="lcmaker"/>
+      <WaNo type="DFT-Turbomole" uuid="c68b6f00-6350-4a86-a7ff-4b5f0bccb0ab" id="0" name="DFT-Turbomole"/>
+      <WaNo type="LCmaker" uuid="9f940702-c003-473a-8f23-04a631fe9e21" id="1" name="LCmaker"/>
     </WFControl>
     <WFControl name="SubWF" type="SubWorkflow">
-      <WaNo type="DFT-Turbomole" uuid="0296ed3f-898b-462a-9bc8-d2f300f0f90d" id="0" name="DFT-Turbomole"/>
-      <WaNo type="lcmaker" uuid="ae5b61bf-71fc-416a-a870-7d5046b87484" id="1" name="lcmaker"/>
+      <WaNo type="DFT-Turbomole" uuid="a8aefde0-cc3b-4fce-90bc-b2776e3c4584" id="0" name="DFT-Turbomole"/>
+      <WaNo type="LCmaker" uuid="da3424ce-4901-4ac2-829b-bd6325d66bc7" id="1" name="LCmaker"/>
     </WFControl>
   </WFControl>
-  <WaNo type="AuToGraFS" uuid="7dbc4ca0-95eb-465e-9a53-41be1786affc" id="2" name="AuToGraFS"/>
-  <WaNo type="GULP" uuid="bf6cafe3-15c5-43b9-bfce-8930a718b7ed" id="3" name="GULP"/>
-  <WaNo type="Format-Converter" uuid="870ee226-bedc-41b3-9ecf-c4219409c77c" id="4" name="Format-Converter"/>
-  <WaNo type="DFT-VASP" uuid="0e3cf4fc-8fed-42e2-82cf-9922dbc88c65" id="5" name="DFT-VASP"/>
+  <WaNo type="AuToGraFS" uuid="34e91623-50a3-4d92-b483-167918c98f7e" id="2" name="AuToGraFS"/>
+  <WaNo type="GULP" uuid="101423a0-528d-4287-b689-2411c4c1fdbb" id="3" name="GULP"/>
+  <WaNo type="Format-Converter" uuid="ac6209b6-940e-4b30-9ea2-513683b78a7d" id="4" name="Format-Converter"/>
+  <WaNo type="DFT-VASP" uuid="aac5d2ef-ca79-4148-af30-cd7f74ef9885" id="5" name="DFT-VASP"/>
   <WFControl name="Parallel_1" type="Parallel">
     <WFControl name="SubWF" type="SubWorkflow">
-      <WaNo type="Format-Converter" uuid="c74be2a9-e696-48d1-8a91-45983ed4f35a" id="0" name="Format-Converter"/>
-      <WaNo type="lammps-interface" uuid="7e047fda-3c67-44cb-8c29-e0784fc93a86" id="1" name="lammps-interface"/>
-      <WaNo type="LAMMPS" uuid="5d2d375d-89da-4347-bee6-41907e500fd1" id="2" name="LAMMPS"/>
+      <WaNo type="Format-Converter" uuid="8cf82737-b57f-45fc-993b-95a57b21e8f1" id="0" name="Format-Converter"/>
+      <WaNo type="lammps-interface" uuid="c4bbc008-1e63-4d9b-b844-6626bb8980fc" id="1" name="lammps-interface"/>
+      <WaNo type="LAMMPS" uuid="1d516537-d70c-4945-88b3-48a9c4427bfc" id="2" name="LAMMPS"/>
     </WFControl>
     <WFControl name="SubWF" type="SubWorkflow">
-      <WaNo type="Achmol" uuid="20eca090-ff95-440a-85a4-98618ec9027d" id="0" name="Achmol"/>
-      <WaNo type="SuperCeller" uuid="2e8fd57a-8fac-40b4-8956-ec50f86a28c4" id="1" name="SuperCeller"/>
-      <WaNo type="QuantumPatch3" uuid="ca7ebab7-8979-4fc4-8d6c-889012eaa212" id="2" name="QuantumPatch3"/>
+      <WaNo type="Achmol" uuid="1eefeebe-9170-423c-8349-524a7fab4a83" id="0" name="Achmol"/>
+      <WaNo type="SuperCeller" uuid="74c56d82-abbe-45a3-9830-4aac368d7851" id="1" name="SuperCeller"/>
+      <WaNo type="QuantumPatch3" uuid="5df7dc8e-4116-4990-aa16-a2982b8338be" id="2" name="QuantumPatch3"/>
     </WFControl>
   </WFControl>
 </root>

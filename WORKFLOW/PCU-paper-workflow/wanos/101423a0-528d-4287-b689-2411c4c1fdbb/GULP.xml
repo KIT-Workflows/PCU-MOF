@@ -1,0 +1,39 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Mersad Mostaghimi </Name>
+  			<Email>mersad.mostaghimi@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo perform the GULP. 
+ 		</Description>
+
+ 		<Keyword>GULP,UFF4MOF</Keyword>
+	</WaNoMeta>
+	
+
+	<WaNoRoot name="GULP">
+        <WaNoFile logical_filename="mof.gin" description="Select a .gin type file created by AuToGraFs. Example: mof.gin" name="INPUT_FILE" local="False">AuToGraFS/outputs/mof.gin</WaNoFile>
+	</WaNoRoot>
+	
+	<WaNoExecCommand>	
+		#source /shared/software/anaconda3/etc/profile.d/conda.sh
+		module load anaconda3
+		conda activate
+		bash run_GULP.sh
+		python GULP_report.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="run_GULP.sh">run_GULP.sh</WaNoInputFile>
+		<WaNoInputFile logical_filename="GULP_report.py">GULP_report.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="report_template.body">report_template.body</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+        <WaNoOutputFile>mof.cif</WaNoOutputFile>
+        <WaNoOutputFile>gulp.out</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>

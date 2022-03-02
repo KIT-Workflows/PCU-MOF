@@ -1,0 +1,18 @@
+- - false
+  - CPUs per Node
+  - 1
+- - false
+  - Number of Nodes
+  - 1
+- - false
+  - Memory [MB]
+  - 1024
+- - false
+  - Time [Wall]
+  - 86400
+- - false
+  - Queue
+  - default
+- - false
+  - Custom Requests
+  - ''
