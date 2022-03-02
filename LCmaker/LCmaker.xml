@@ -55,7 +55,7 @@
 	    <WaNoBool name="Xplace"  visibility_condition="%s == True" visibility_var_path="Optional" description = "If you want to replace dummies with the atoms in the dummy option, turn on this option. Default: It puts dummies at the near of the atoms indexed in dummy, or the dummies that it finds them automatically." >False</WaNoBool>
 		<WaNoBool name="AuToGraFs"  visibility_condition="%s == True" visibility_var_path="Optional" description = "The path to the AuToGraFs directory where the mol2inp file is there. Dont Change it if it works. Default: /shared/software/chem/MOFsofts/autografs" >False</WaNoBool>
 		<WaNoString name="AuToGraFs PATH" visibility_condition="%s == True" visibility_var_path="AuToGraFs" local="True">/shared/software/chem/MOFsofts/autografs</WaNoString>
-		<WaNoDropDown  name="Linker_type"  visibility_condition="%s == True" visibility_var_path="Optional" description= "If you want the xyz file for the new version of AuToGraFs(equal or greater than version 2.0), please select xyz. Default: for Autografs before version 2.0, which creates inp linkers and centers.">
+		<WaNoDropDown  name="Linker type"  visibility_condition="%s == True" visibility_var_path="Optional" description= "If you want the xyz file for the new version of AuToGraFs(equal or greater than version 2.0), please select xyz. Default: for Autografs before version 2.0, which creates inp linkers and centers.">
             <Entry id="0" chosen="True">inp</Entry>
             <Entry id="1">xyz</Entry>
         </WaNoDropDown>
@@ -74,7 +74,7 @@
 		PYTHON2=$(which python2)
 		LCMAKER=$(which LCmaker)
 		$PYTHON3 $LCMAKER $(cat options)
-		python LCmaker_report.py
+		$PYTHON3 LCmaker_report.py
 	</WaNoExecCommand>
 	
 	<WaNoInputFiles>

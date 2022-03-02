@@ -14,6 +14,6 @@ This **WaNo** performs lcmaker to create the MOF linkers and centers files (*inp
 |Shape | Set the shape of SBU from the list. | pcu |
 |Xplace | Can be used, if dummies should be replaced with the atoms in the dummy option.| false |
 |AuToGraFs | The path to the AuToGraFs directory, where the mol2inp file is located.  | $AuToGraFS_HOME |
-|Linker_type | For Autografs before version 2.0, which creates inp linkers and centers. | True |
+|Linker type | For Autografs before version 2.0, which creates inp linkers and centers. | True |
 
 ![Semantic description of image](lcmaker.png)

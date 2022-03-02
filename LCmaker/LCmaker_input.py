@@ -26,7 +26,7 @@ if __name__ == '__main__':
             if WaNo_file["Xplace"]:
                 opt_file.write(" -x ")
  
-            if WaNo_file["Linker_type"] == "xyz":
+            if WaNo_file["Linker type"] == "xyz":
                 opt_file.write(" -t ")
 
  
