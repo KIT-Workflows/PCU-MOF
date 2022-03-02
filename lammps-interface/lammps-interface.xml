@@ -15,11 +15,11 @@
 
 	<WaNoRoot name="Lammps-Interface">
 		
-<WaNoBool name="Fix_cell" description=" Fix the cell in trajectories">False</WaNoBool>
+<WaNoBool name="Fix cell" description=" Fix the cell in trajectories">False</WaNoBool>
 <WaNoFile logical_filename="lammps.cif" description = "path to cif file to interpret . Example: lammps.cif" name="INPUT_FILE">lammps.cif</WaNoFile>
 	<WaNoDictBox name="Force Field options">
 
-		<WaNoDropDown  name="FORCE_FIELD" description= "Enter the requested force field to describe the system. Current options are
+		<WaNoDropDown  name="FORCE FIELD" description= "Enter the requested force field to describe the system. Current options are
                         'BTW_FF', 'Dreiding', 'UFF', 'UFF4MOF', and 'Dubbeldam'. The default is set
                         to the Universal Force Field for MOFs[UFF4MOF].">
             <Entry id="0" chosen="True">UFF4MOF</Entry>
@@ -29,7 +29,7 @@
 			<Entry id="4">Dubbeldam</Entry>
         </WaNoDropDown>
 
-		<WaNoDropDown  name="molecule-ff" description= "Chose a force field for any molecules found in the structure. This is applies
+		<WaNoDropDown  name="molecule ff" description= "Chose a force field for any molecules found in the structure. This is applies
                         a 'blanket' to all found molecules, so exercise with caution. Future
                         iterations will consider an input file to differentiate force fields between
                         different molecules. Default is the same force field requested for the
@@ -43,13 +43,13 @@
 			<Entry id="6">framework force field</Entry>
         </WaNoDropDown>
 
-		<WaNoBool name="h-bonding" description= "Add hydrogen bonding potentials to the force field characterization.
+		<WaNoBool name="h bonding" description= "Add hydrogen bonding potentials to the force field characterization.
                         Currently only applies to Dreiding. Default is off">False</WaNoBool>
 
-		<WaNoString name="dreid-bond-type" description= 'Request the Morse bond potential for the Dreiding force field. Default is
+		<WaNoString name="dreid bond type" description= 'Request the Morse bond potential for the Dreiding force field. Default is
                         harmonic.' >harmonic</WaNoString>
 
-      	<WaNoBool name="fix-metal" description= "Fix the metal geometries with modified potentials to match their input
+      	<WaNoBool name="fix metal" description= "Fix the metal geometries with modified potentials to match their input
                         geometries. The potential isn't set to be overly rigid so that the material
                         will behave physically in finite temperature calculations, however it may
                         introduce some unintended artifacts so exercise with caution. Useful for
@@ -63,7 +63,7 @@
 	<WaNoBool name="minimize" description= "Add hydrogen bonding potentials to the force field characterization.
                         Currently only applies to Dreiding. Default is off">False</WaNoBool>
 
-	<WaNoBool name="bulk-moduli" description= "Request input files necessary for an energy vs volume calculation. This will
+	<WaNoBool name="bulk moduli" description= "Request input files necessary for an energy vs volume calculation. This will
                         use values from ITER_COUNT and MAX_DEV to create the volume range">False</WaNoBool>
 
 	<WaNoBool name="npt" description= "Request input files necessary for an isothermal-isobaric simulation. This
@@ -88,7 +88,7 @@
                         supercell vectors. This is an approximation, but is useful for certain
                         calculations. Default is FALSE.">False</WaNoBool>
 
-	<WaNoBool name="randomize-velocities" description= "Adds a velocity randomization of the atoms prior to finite temperature
+	<WaNoBool name="randomize velocities" description= "Adds a velocity randomization of the atoms prior to finite temperature
                         simulation. The velocities are randomized to TEMP.">False</WaNoBool>
 
 	<WaNoInt name="dcd" description = "Store trajectory of simulation in a dcd format every DUMP_DCD steps. Default
@@ -111,17 +111,17 @@
                         is 0.4 angstroms">0.4</WaNoFloat>	
 
 
- 	<WaNoInt name="neighbour-size" description = "To find SBUs in the framework via pattern recognition. This parameter
+ 	<WaNoInt name="neighbour size" description = "To find SBUs in the framework via pattern recognition. This parameter
                         determines how large a subset of atoms to search around each central atom in
                         the framework. Central atoms are typically considered the metal species for
                         inorganic SBUs or carbon/nitrogen for organic SBUs. This parameter will
                         collect all atoms within NEIGHBOUR_SIZE bonds from the central atom. Default
                         is 5.">5</WaNoInt>
 
- 	<WaNoInt name="iter-count" description = "Number of iteration steps to change a variable of interest (temperature,
+ 	<WaNoInt name="iter count" description = "Number of iteration steps to change a variable of interest (temperature,
                         volume). Default is 10 steps.">10</WaNoInt>
 
-	<WaNoFloat name="max-deviation" description = " Max deviation of adjusted variable at each step is scaled by
+	<WaNoFloat name="max deviation" description = " Max deviation of adjusted variable at each step is scaled by
                         MAX_DEV/ITER_COUNT. Default is 0.01 (ideal for volume).">0.01</WaNoFloat>
 
 	<WaNoFloat name="temperature" description = "Simulation temperature. This parameter is used only if NPT or NVT are True.
@@ -130,11 +130,11 @@
 	<WaNoFloat name="pressure" description = "Simulation pressure. This parameter is used only if NPT is True. Default is
                         1.0 atmosphere.">1.0</WaNoFloat>
 
- 	<WaNoInt name="production-steps" description = "Number of production steps in the simulation. Applies to NPT and
+ 	<WaNoInt name="production steps" description = "Number of production steps in the simulation. Applies to NPT and
                         THERMAL_SCALING simulations. Default is 200,000 steps. (corresponding to 200
                         ps if the timestep is 1 fs)">200000</WaNoInt>
 
- 	<WaNoInt name="equilibration-steps" description = "Number of equilibration steps in the simulation. Applies to NPT and
+ 	<WaNoInt name="equilibration steps" description = "Number of equilibration steps in the simulation. Applies to NPT and
                         THERMAL_SCALING simulations. Default is 200,000 steps. (corresponding to 200
                         ps if the timestep is 1 fs)">200000</WaNoInt>
 	 </WaNoDictBox>

@@ -9,13 +9,13 @@ if __name__ == '__main__':
         WaNo_file = yaml.full_load(file)
     with open("options","w") as opt_file:
 
-        if WaNo_file["INPUT_type"] == "CONTCAR":
+        if WaNo_file["INPUT type"] == "CONTCAR":
             opt_file.write(" -i  CONTCAR " )
-        elif WaNo_file["INPUT_type"] == "vasprun.xml":
-            shutil.copyfile(WaNo_file["INPUT_FILE"],"vasprun.xml" )
+        elif WaNo_file["INPUT type"] == "vasprun.xml":
+            shutil.copyfile(WaNo_file["INPUT FILE"],"vasprun.xml" )
             opt_file.write(" -i  vasprun.xml " )
-        elif WaNo_file["INPUT_type"] == "sample.cif":
-            shutil.copyfile(WaNo_file["INPUT_FILE"],"sample.cif" )
+        elif WaNo_file["INPUT type"] == "sample.cif":
+            shutil.copyfile(WaNo_file["INPUT FILE"],"sample.cif" )
             opt_file.write(" -i  sample.cif " )
  
         opt_file.write(" -t %s " %WaNo_file["TOPOLOGY"])

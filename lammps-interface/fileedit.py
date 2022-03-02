@@ -2,7 +2,7 @@ import yaml
 if __name__ == '__main__':
     with open('rendered_wano.yml') as file:
         WaNo_file = yaml.full_load(file)
-    if WaNo_file["Fix_cell"]:
+    if WaNo_file["Fix cell"]:
         with open("data.lammps","r") as datain:
             lines = datain.readlines()
 

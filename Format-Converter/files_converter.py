@@ -21,10 +21,10 @@ def check_xyz_cell(struct):
 with open('rendered_wano.yml') as file:
     WaNo_file = yaml.full_load(file)
 
-input_file = WaNo_file["Input-File"]
-input_format = WaNo_file["Input-Format"]
-output_name = WaNo_file["Output-File-Name"]
-output_format = WaNo_file["Output-Format"]
+input_file = WaNo_file["Input File"]
+input_format = WaNo_file["Input Format"]
+output_name = WaNo_file["Output File Name"]
+output_format = WaNo_file["Output Format"]
 
 struct = io.read(input_file, format = input_format)
 if input_format == "xyz":

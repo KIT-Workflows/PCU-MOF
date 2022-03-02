@@ -21,8 +21,8 @@ This WaNo performs **AuToGraFS** to create initial MOF model. It creates the con
 |Output prefix|Output file of the generated MOF (without postfix). Default=mof|False|
 |OUTPUT EXTN|The AuToGraFS output format(extension). Default=.gin|False|
 |Set supercell|Optional production of supercell. Default is None. Argument may be one integer or three.|False|
-|leave_ghosts |  Leave extra ghost (Bq) atoms in structure for post functionalisation.|False|
-|no-leave_ghosts|Leave extra ghost (Bq) atoms in structure for post functionalisation.|False|
+|leave ghosts |  Leave extra ghost (Bq) atoms in structure for post functionalisation.|False|
+|no leave ghosts|Leave extra ghost (Bq) atoms in structure for post functionalisation.|False|
 
 
 

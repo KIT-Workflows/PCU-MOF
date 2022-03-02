@@ -3,14 +3,19 @@
 
 	<WaNoMeta>
  		<Author>
-		<Name> Tobias Schlöder and Celso R. C. Rego </Name>
-  		<Email> tobias.schloeder@kit.edu, celsorego@kit.edu</Email>
+		<Name> Tobias Schlöder </Name>
+  		<Email> tobias.schloeder@kit.edu</Email>
+	i	</Author>
+ 		<Author>
+		<Name> Celso R. C. Rego </Name>
+  		<Email> celsorego@kit.edu</Email>
  		</Author>
 		<Description>
-			This WaNo performs the DFT calculation using Turbomole code. Here all 
-			the inputs files might be automatically generated or loaded.
+    			This is a WaNo for running DFT and TDDFT calculations with the Turbomole code requiring only a structure file as the minimal input.
  		</Description>
  		<Keyword>DFT</Keyword>
+ 		<Keyword>TDDFT</Keyword>
+ 		<Keyword>Turbomole</Keyword>
 	</WaNoMeta>
 
 	<WaNoRoot name="DFT Turbomole">
@@ -19,16 +24,22 @@
 		<WaNoString visibility_condition="%s == False" visibility_var_path="Follow-up calculation" name="Title">Title</WaNoString>
 		<WaNoFile visibility_condition="%s == True" visibility_var_path="Follow-up calculation" logical_filename="old_calc.tar.xz" name="Results from old calculation">results.tar.xz</WaNoFile>
 
-	    	<WaNoDictBox name="Molecular structure">
-			<WaNoBool visibility_condition="%s == True" visibility_var_path="Follow-up calculation" name="Use old structure">False</WaNoBool>
-			<WaNoFile visibility_condition="%s == False" visibility_var_path="Molecular structure.Use old structure" logical_filename="initial_structure.xyz" name="Structure file"> enter the file.xyz format</WaNoFile>
-			<WaNoBool visibility_condition="%s == False" visibility_var_path="Molecular structure.Use old structure" name="Internal coordinates">False</WaNoBool>
+	    	<WaNoDictBox name='Molecular structure'>
+			<WaNoBool name ='Use old structure' visibility_condition='%s == True' visibility_var_path='Follow-up calculation'>False</WaNoBool>
+			<WaNoDropDown name = 'Structure file type' visibility_condition='%s == False' visibility_var_path='Molecular structure.Use old structure'>
+				<Entry id = '0' chosen='True'>xyz</Entry>
+				<Entry id = '1'>Turbomole coord</Entry>
+				<Entry id = '2'>Gaussian input</Entry>
+			</WaNoDropDown>
+			<WaNoFile name='Structure file' logical_filename='initial_structure' visibility_condition='%s == False' visibility_var_path='Molecular structure.Use old structure'>structure file</WaNoFile>
+			<WaNoBool name="Internal coordinates" visibility_condition='%s == False' visibility_var_path='Molecular structure.Use old structure'>False</WaNoBool>
             	</WaNoDictBox>
 
 		<WaNoDictBox name="Basis set">
-                	<WaNoDropDown name="Basis set type">
-                		<Entry id="0" chosen="True">def-SV(P)</Entry>
-                    		<Entry id="1">def2-SVP</Entry>
+			<WaNoBool visibility_condition="%s == True" visibility_var_path="Follow-up calculation" name='Use basis set from previous calculation'>False</WaNoBool>
+                	<WaNoDropDown name="Basis set type" visibility_condition='%s == False' visibility_var_path='Basis set.Use basis set from previous calculation'>
+                    		<Entry id="0">def-SV(P)</Entry>
+                		<Entry id="1" chosen="True">def2-SVP</Entry>
 	         		<Entry id="2">def2-TZVP</Entry>
 	         		<Entry id="3">def2-TZVPP</Entry>
 	            		<Entry id="4">def2-QZVP</Entry>
@@ -48,70 +59,85 @@
 	
             	<WaNoDictBox name="Initial guess">
 			<WaNoBool visibility_condition="%s == True" visibility_var_path="Follow-up calculation" name="Use old orbitals" description = "Charge and multiplicity will be taken from old calculation">False</WaNoBool>
-                	<WaNoInt visibility_condition="%s == False" visibility_var_path="Initial guess.Use old orbitals" name="Charge" description = "Extended Hueckel Guess">0</WaNoInt>
-			<WaNoInt visibility_condition="%s == False" visibility_var_path="Initial guess.Use old orbitals" name="Multiplicity" description = "Must be possible with the given charge">1</WaNoInt>
+			<WaNoInviBox name='G1' visibility_condition="%s == False" visibility_var_path="Initial guess.Use old orbitals">
+				<WaNoBool name = 'Use charge and multiplicity from input file' visibility_condition = '"%s" == "Gaussian input"' visibility_var_path='Molecular structure.Structure file type'>False</WaNoBool>
+                		<WaNoInt name="Charge" visibility_condition = '%s == False' visibility_var_path = 'Initial guess.G1.Use charge and multiplicity from input file' description = "Extended Hueckel Guess">0</WaNoInt>
+				<WaNoInt name="Multiplicity" visibility_condition = '%s == False' visibility_var_path = 'Initial guess.G1.Use charge and multiplicity from input file' description = "Must be possible with the given charge">1</WaNoInt>
+			</WaNoInviBox>
             	</WaNoDictBox>
             
 		<WaNoDictBox name="DFT options">
-			<WaNoBool name="Use RI">True</WaNoBool>
-			<WaNoInt visibility_condition="%s == True" visibility_var_path="DFT options.Use RI" name="Memory for RI" description="value in MB">2000</WaNoInt>
-			<WaNoDropDown name="Functional">
-				<Entry id="0">None</Entry>
-				<Entry id="1">b-p</Entry>
-				<Entry id="2">pbe</Entry>
-				<Entry id="3" chosen="True">b3-lyp</Entry>
-	            		<Entry id="4">pbe0</Entry>
-	            		<Entry id="5">m06</Entry>
-	            		<Entry id="6">m06-2x</Entry>
-				<Entry id="7">tpss</Entry>
-				<Entry id="8">tpssh</Entry>
-	        	</WaNoDropDown>
-				
-			<WaNoDropDown name="Integration grid">
-				<Entry id="0" chosen="True">m3</Entry>
-				<Entry id="1">m4</Entry>
-				<Entry id="2">m5</Entry>
-	        	</WaNoDropDown>
+			<WaNoBool visibility_condition="%s == True" visibility_var_path="Follow-up calculation" name='Use parameters from previous calculation'>False</WaNoBool>
+			<WaNoInviBox name='G1' visibility_condition='%s == False' visibility_var_path='DFT options.Use parameters from previous calculation'>
+				<WaNoBool name='Advanced options'>False</WaNoBool>
+				<WaNoDropDown name="Functional">
+					<Entry id="0">None</Entry>
+					<Entry id="1">b-p</Entry>
+					<Entry id="2">pbe</Entry>
+					<Entry id="3" chosen="True">b3-lyp</Entry>
+	            			<Entry id="4">pbe0</Entry>
+	            			<Entry id="5">m06</Entry>
+		            		<Entry id="6">m06-2x</Entry>
+					<Entry id="7">tpss</Entry>
+					<Entry id="8">tpssh</Entry>
+	        		</WaNoDropDown>
 
-			<WaNoDropDown name="vdW correction">
-				<Entry id="0" chosen="True">None</Entry>
-				<Entry id="1">D2</Entry>
-				<Entry id="2">D3</Entry>
-				<Entry id="3">D3-BJ</Entry>
-				<Entry id="4">D4</Entry>
-	        	</WaNoDropDown>
+				<WaNoDropDown name="vdW correction">
+					<Entry id="0" chosen="True">None</Entry>
+					<Entry id="1">D2</Entry>
+					<Entry id="2">D3</Entry>
+					<Entry id="3">D3-BJ</Entry>
+					<Entry id="4">D4</Entry>
+		        	</WaNoDropDown>
+
+				<WaNoBool name="COSMO calculation">False</WaNoBool>
+				<WaNoFloat name="Rel permittivity" visibility_condition="%s == True" visibility_var_path="DFT options.G1.COSMO calculation">1.0</WaNoFloat>
+				<WaNoInviBox name='Adv options' visibility_condition='%s == True' visibility_var_path='DFT options.G1.Advanced options'>
+					<WaNoInt name='Max SCF iterations'>300</WaNoInt>
+					<WaNoBool name="Use RI">True</WaNoBool>
+					<WaNoInt visibility_condition="%s == True" visibility_var_path="DFT options.Adv options.Use RI" name="Memory for RI" description="value in MB">2000</WaNoInt>
+					<WaNoDropDown name="Integration grid">
+						<Entry id="0" chosen="True">m3</Entry>
+						<Entry id="1">m4</Entry>
+						<Entry id="2">m5</Entry>
+	        			</WaNoDropDown>
+				</WaNoInviBox>
+			</WaNoInviBox>
             	</WaNoDictBox>
             
 		<WaNoDictBox name="Type of calculation">
 			<WaNoBool name="Structure optimisation">False</WaNoBool>
-			<WaNoBool name="TDDFT">False</WaNoBool>
-			<WaNoDictBox visibility_condition="%s == True" visibility_var_path="Type of calculation.TDDFT" name="TDDFT options">
-				<WaNoDropDown description="Only relevant for for closed-shell ground states" visibility_condition="%i == 1" visibility_var_path="Initial guess.Multiplicity" name="Type of excited states">
+			<WaNoInt visibility_condition='%s == True' visibility_var_path='Type of calculation.Structure optimisation' name="Max optimization cycles">500</WaNoInt>
+			<WaNoBool name="Excited state calculation">False</WaNoBool>
+			<WaNoDictBox visibility_condition="%s == True" visibility_var_path="Type of calculation.Excited state calculation" name="TDDFT options">
+				<WaNoDropDown description="Only relevant for for closed-shell ground states" visibility_condition="%i == 1" visibility_var_path="Initial guess.G1.Multiplicity" name="Type of excited states">
 					<Entry id="0" chosen="True">Singlet</Entry>
 					<Entry id="1">Triplet</Entry>
 				</WaNoDropDown>
 				<WaNoInt name="Number of excited states">5</WaNoInt>
 				<WaNoInt visibility_condition="%s == True" visibility_var_path="Type of calculation.Structure optimisation" name="Optimised state">1</WaNoInt>
 	    		</WaNoDictBox>
+			<WaNoBool name="Frequency calculation" visibility_condition="%s == False" visibility_var_path='Type of calculation.Excited state calculation' description = "Vibrational Analysis only for ground states (using aoforce)">False</WaNoBool>
 	    	</WaNoDictBox>
-    </WaNoRoot>
+	</WaNoRoot>
 
-    <WaNoExecCommand>
-	    #	source /home/ws/gt5111/miniconda3/etc/profile.d/conda.sh
-	    module load anaconda3
-	conda activate
-	bash ./tm.sh
+	<WaNoExecCommand>
+	export NANOVER=V4
+	source $NANOMATCH/$NANOVER/local_anaconda/bin/activate
+	conda activate simstack_kit
+	source $NANOMATCH/$NANOVER/configs/turbomole.config  
+	python run_tm.py
 	</WaNoExecCommand>
 
-    <WaNoInputFiles>
-        <WaNoInputFile logical_filename="tm.sh">tm.sh</WaNoInputFile>
-        <WaNoInputFile logical_filename="run_tm.py">run_tm.py</WaNoInputFile>
-        <WaNoInputFile logical_filename="turbomole_functions.py">turbomole_functions.py</WaNoInputFile>
-    </WaNoInputFiles>
+	<WaNoInputFiles>
+        	<WaNoInputFile logical_filename="run_tm.py">run_tm.py</WaNoInputFile>
+    		<WaNoInputFile logical_filename="turbomole_functions.py">turbomole_functions.py</WaNoInputFile>
+	</WaNoInputFiles>
     
-    <WaNoOutputFiles>
-        <WaNoOutputFile>results.tar.xz</WaNoOutputFile>
-        <WaNoOutputFile>results.yml</WaNoOutputFile>
-        <WaNoOutputFile>final_structure.xyz</WaNoOutputFile>
-    </WaNoOutputFiles>
+	<WaNoOutputFiles>
+        	<WaNoOutputFile>results.tar.xz</WaNoOutputFile>
+        	<WaNoOutputFile>turbomole_results.yml</WaNoOutputFile>
+        	<WaNoOutputFile>final_structure.xyz</WaNoOutputFile>
+	</WaNoOutputFiles>
+
 </WaNoTemplate>

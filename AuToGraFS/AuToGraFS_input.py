@@ -7,6 +7,7 @@ mersad.mostaghimi@kit.edu
 # import  yaml , os
 import yaml
 import os
+import tarfile
 import shutil
 from ast import literal_eval
 
@@ -54,15 +55,18 @@ if __name__ == '__main__':
                                               WaNo_file["supercell"][1],
                                               WaNo_file["supercell"][2]))
 
-        if WaNo_file["leave_ghosts"]:
+        if WaNo_file["leave ghosts"]:
             opt_file.write(" --leave_ghosts ")
 
-        if WaNo_file["no-leave_ghosts"]:
+        if WaNo_file["no leave ghosts"]:
             opt_file.write(" --no-leave_ghosts ")
 
         if WaNo_file["OUTPUT EXTN"]:
-            opt_file.write(" -e %s " % WaNo_file["OUTPUT_EXTN"])
+            opt_file.write(" -e %s " % WaNo_file["Output Extention"])
 
         if WaNo_file["Output prefix"]:
-            opt_file.write(" -o %s " % WaNo_file["output_prefix"])
+            opt_file.write(" -o %s " % WaNo_file["output prefix"])
+    tar = tarfile.open("database.tar.gz","w:gz")
+    tar.add("database")
+    tar.close()
     exit(0)

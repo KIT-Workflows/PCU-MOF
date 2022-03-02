@@ -14,8 +14,8 @@
 
         <WaNoRoot name="Format-Converter">
 
-        <WaNoFile logical_filename="Input-File" name="Input-File" local="True">/home/celso/WaNos_2020/Format-Converter/H20.vasp</WaNoFile>
-        <WaNoDropDown name="Input-Format">
+        <WaNoFile logical_filename="Input File" name="Input File" local="True">/home/celso/WaNos_2020/Format-Converter/H20.vasp</WaNoFile>
+        <WaNoDropDown name="Input Format">
             <Entry id="0">xyz</Entry>
             <Entry id="1">cif</Entry>
             <Entry id="2">pdb</Entry>
@@ -23,8 +23,8 @@
             <Entry id="4" >gen</Entry>
         </WaNoDropDown>
 
-        <WaNoString name="Output-File-Name" description="The file extension will be according to the chosen format">H20</WaNoString>
-        <WaNoDropDown name="Output-Format">
+        <WaNoString name="Output File Name" description="The file extension will be according to the chosen format">H20</WaNoString>
+        <WaNoDropDown name="Output Format">
             <Entry id="0" chosen="True">xyz</Entry>
             <Entry id="1">cif</Entry>
             <Entry id="2">pdb</Entry>
@@ -48,7 +48,7 @@
         </WaNoInputFiles>
 
         <WaNoOutputFiles>
-                <WaNoOutputFile>{{ wano["Output-File-Name"] + "." +wano["Output-Format"] }}</WaNoOutputFile>
+                <WaNoOutputFile>{{ wano["Output File Name"] + "." +wano["Output Format"] }}</WaNoOutputFile>
         </WaNoOutputFiles>
 </WaNoTemplate>
 

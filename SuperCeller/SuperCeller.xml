@@ -15,9 +15,9 @@
 	
 
 	<WaNoRoot name="SuperCeller">
-		<WaNoFile logical_filename="linkers.xyz" description = "The input file name in xyz format. Example: linkers.xyz" name="XYZ_file" >linkers.xyz</WaNoFile>
+		<WaNoFile logical_filename="linkers.xyz" description = "The input file name in xyz format. Example: linkers.xyz" name="XYZ file" >linkers.xyz</WaNoFile>
 
-		<WaNoFile logical_filename="CONTCAR" description = "The input file that provides the lattice parameters. Example: CONTCAR or POSCAR." name="Lattice_file" >CONTCAR</WaNoFile>
+		<WaNoFile logical_filename="CONTCAR" description = "The input file that provides the lattice parameters. Example: CONTCAR or POSCAR." name="Lattice file" >CONTCAR</WaNoFile>
 	
 		<WaNoInt name="Xrepeat" description = "Repeat times in X direction">2</WaNoInt>
 		<WaNoInt name="Yrepeat" description = "Repeat times in Y direction">2</WaNoInt>

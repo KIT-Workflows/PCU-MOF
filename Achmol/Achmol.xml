@@ -16,12 +16,12 @@
 
 	<WaNoRoot name="Achmol">
 
-		<WaNoDropDown  name="INPUT_type" description= "INPUT_type">
+		<WaNoDropDown  name="INPUT type" description= "INPUT type">
             <Entry id="0" chosen="True">CONTCAR</Entry>
             <Entry id="1">vasprun.xml</Entry>
 			<Entry id="2">sample.cif</Entry>
         </WaNoDropDown>
-		<WaNoFile logical_filename="CONTCAR" description = "The input file name . Example: CONTCAR" name="INPUT_FILE">CONTCAR</WaNoFile>
+		<WaNoFile logical_filename="CONTCAR" description = "The input file name . Example: CONTCAR" name="INPUT FILE">CONTCAR</WaNoFile>
 		<WaNoDropDown name="Metal finding" description= 'Select the way that Achmol must find the metal atoms and remove them or not. Automatic: will find all metal atoms and remove them. By index: use the metal indices(based on the index of atoms in ASE GUI representation). "Don`t remove" will not remove anything'>
             <Entry id="0" chosen="True">Automatic</Entry>
             <Entry id="1">By index</Entry>

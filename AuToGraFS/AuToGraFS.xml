@@ -125,31 +125,28 @@
 			<WaNoFloat name="Zdistance"  visibility_condition="%s == True" visibility_var_path="Optional"   description= "Enter intitial Z distance for SQL MOF GULP optimization. Default: 25 Angstroems. Too small Z distance may generate wrong MOF structure.">0</WaNoFloat>
 
            <WaNoBool name="Extcontrol"  visibility_condition="%s == True" visibility_var_path="Optional"  description ="For the user-defined control.txt file">False</WaNoBool>
-            <WaNoFile logical_filename="control.txt" visibility_condition="%s == True" visibility_var_path="Extcontrol" name="control.txt">control.txt</WaNoFile>
+            <WaNoFile logical_filename="control.txt" visibility_condition="%s == True" visibility_var_path="Extcontrol" name="control">control.txt</WaNoFile>
     
             <WaNoFile logical_filename="database.tar.gz" description = 'Base path for centers, linkers and functional groups, Default: by default it uses the database that is created from user input.' visibility_condition="%s == True" visibility_var_path="Extcontrol" name="database">database.tar.gz</WaNoFile>
 
 			<WaNoBool name="Output prefix"  visibility_condition="%s == True" visibility_var_path="Optional"  description = 'Output file of the generated MOF (without postfix). Default=mof'>False</WaNoBool>
-			<WaNoString name="output_prefix" visibility_condition="%s == True" visibility_var_path="Output prefix" local="True" >mof</WaNoString>
+			<WaNoString name="output prefix" visibility_condition="%s == True" visibility_var_path="Output prefix" local="True" >mof</WaNoString>
 
 			<WaNoBool name="OUTPUT EXTN"  visibility_condition="%s == True" visibility_var_path="Optional"  description = 'The AuToGraFS output format(extension). Default=.gin'>False</WaNoBool>
-			<WaNoString name="OUTPUT_EXTN" visibility_condition="%s == True" visibility_var_path="OUTPUT EXTN" local="True" >gin</WaNoString>
+			<WaNoString name="Output Extention" visibility_condition="%s == True" visibility_var_path="OUTPUT EXTN" local="True" >gin</WaNoString>
 
 			<WaNoBool name="Set supercell"  visibility_condition="%s == True" visibility_var_path="Optional"  description= "Optional production of supercell. Default is None. Argument may be one integer or three.">False</WaNoBool>
         	<WaNoMatrixFloat rows="1" cols="3" col_header="a; b; c"  name="supercell" row_header=""	visibility_condition="%s == True" visibility_var_path="Set supercell">[[0,0,0]]</WaNoMatrixFloat>
 
-			<WaNoBool name="leave_ghosts"   visibility_condition="%s == True" visibility_var_path="Optional" description= "Leave extra ghost (Bq) atoms in structure for post functionalisation.">False</WaNoBool>
+			<WaNoBool name="leave ghosts"   visibility_condition="%s == True" visibility_var_path="Optional" description= "Leave extra ghost (Bq) atoms in structure for post functionalisation.">False</WaNoBool>
 
-			<WaNoBool name="no-leave_ghosts" visibility_condition="%s == True" visibility_var_path="Optional"  description= "Leave extra ghost (Bq) atoms in structure for post functionalisation.">False</WaNoBool>
+			<WaNoBool name="no leave ghosts" visibility_condition="%s == True" visibility_var_path="Optional"  description= "Leave extra ghost (Bq) atoms in structure for post functionalisation.">False</WaNoBool>
 
 	</WaNoRoot>
 	
 	<WaNoExecCommand>	
 		#source /shared/software/anaconda3/etc/profile.d/conda.sh
-		module load anaconda3
-		conda activate
 		module load MOFsofts
-
 		python AuToGraFS_input.py
 		conda activate py2
 		PYTHON2=$(which python2)
@@ -168,8 +165,9 @@
 	</WaNoInputFiles>
 
 	<WaNoOutputFiles>
-		<WaNoOutputFile>{{ wano["output_prefix"] }}.xyz</WaNoOutputFile>
-		<WaNoOutputFile>{{ wano["output_prefix"] }}.{{ wano["OUTPUT_EXTN"] }}</WaNoOutputFile>
+		<WaNoOutputFile>{{ wano["output prefix"] }}.xyz</WaNoOutputFile>
+		<WaNoOutputFile>{{ wano["output prefix"] }}.{{ wano["Output Extention"] }}</WaNoOutputFile>
 		<WaNoOutputFile>control.txt</WaNoOutputFile>
+		<WaNoOutputFile>database.tar.gz</WaNoOutputFile>
 	</WaNoOutputFiles>
 </WaNoTemplate>

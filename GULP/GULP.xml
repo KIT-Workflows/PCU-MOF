@@ -34,5 +34,6 @@
 
 	<WaNoOutputFiles>
         <WaNoOutputFile>mof.cif</WaNoOutputFile>
+        <WaNoOutputFile>gulp.out</WaNoOutputFile>
 	</WaNoOutputFiles>
 </WaNoTemplate>
