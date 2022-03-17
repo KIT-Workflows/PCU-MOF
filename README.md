@@ -12,8 +12,8 @@ optimization of input linkers is done using TURBOMOLE software, *LCmaker* and *A
 Figure below displays the PCU-MOF workflow as designed in the [Simstack](https://www.simstack.de/) client.
 ![Semantic description of image](workflow.png)
 
-Description of the PCU-MOF workflow and the demonstration of several use-cases are available here:
->M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
+Description of the PCU-MOF workflow and the demonstration of several use-cases are available [here](https://www.frontiersin.org/articles/10.3389/fmats.2022.840644/full):
+>M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, 2022, 9: 840644.
 
 ## Client installation and WaNos
 
@@ -139,8 +139,9 @@ For the MOFsofts software, please communicate with Mersad.Mostaghimi@kit.edu.
 
 ### Cite us
 If you are using PCU-MOF workflow and/or WaNos available in this repository, developed for the MOF design: *LCmaker, AuToGraFS, GULP, lammps-interface,
-LAMMPS, Achmol, SuperCeller*, cite us:
->M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, under review.
+LAMMPS, Achmol, SuperCeller*, [cite us](https://www.frontiersin.org/articles/10.3389/fmats.2022.840644/full):
+>M. Mostaghimi, C. R. C. Rêgo, R. Haldar, C. Wöll, W. Wenzel, M. Kozlowska, *Automated virtual design of organic semiconductors based on metal-organic frameworks*, **Front. Mater.**, 2022, 9: 840644.
+
 
 If you are interested in further WaNos development for your specific case, contact us via mariana.kozlowska@kit.edu and wolfgang.wenzel@kit.edu
 
