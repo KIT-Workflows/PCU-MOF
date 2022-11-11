@@ -176,7 +176,8 @@
 	</WaNoRoot>
 	
 	<WaNoExecCommand>
-	source /home/ws/gt5111/miniconda3/etc/profile.d/conda.sh
+	#source /home/ws/gt5111/miniconda3/etc/profile.d/conda.sh
+	module load anaconda3
 	conda activate
 	python gen_POTCAR.py
 	python incar.py 
