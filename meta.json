@@ -1,0 +1,21 @@
+{
+    "workflow_environment":"SimStack",
+    "title": "PCU-MOF",
+    "description": "his repository provides the WaNos used in the PCU-MOF Workflow",
+    "authors": [ "Mersad Mostaghimi", "mersad.mostaghimi@kit.edu",
+        "Mariana Kozlowska", "mariana.kozlowska@kit.edu",
+        "Celso R. C. Rego", "celsorego@kit.edu"
+    ],
+    "version": "0.0.1",
+    "logo": "MOF-input.png",
+    "release": {
+        "latest_release_date": "2023-19-09",
+        "latest_release_tag": "2023-19-09"
+    },
+    
+    "keywords": [
+        "MOF",
+        "dft",
+        "VASP"
+    ]
+}
